@@ -13,26 +13,33 @@ public class Orange {
     private double price;
     private String country;
 	
-	public Orange(double price, String country) //throws Exception
-	{
-		if(price < 0){
-			this.price = -price;  //ou = 0
-			//ou throw new Exception();
-			//ou gestion avec JML
-		}
-		else
-			this.price=price;
-		
-		this.country=country;
+    public Orange() //throws Exception
+    {
+        this.price=0.0;
+        this.country="";
+    }
+    
+    public Orange(double price, String country) //throws Exception
+    {
+	if(price < 0){
+            this.price = -price;  //ou = 0
+            //ou throw new Exception();
+            //ou gestion avec JML
 	}
-	public double getPrice(){
-		return price;
-	}
-	public String getCountry(){
-		return country;
-	}
+	else
+            this.price=price;
+            this.country=country;
+    }
+    public double getPrice(){
+	return price;
+    }
+    public String getCountry(){
+	return country;
+    }
 
-        public String toString(){
-            return "Orange de " + country;
-        }
+    public String toString(){
+        if(country.equals(""))
+            return "";
+        return "Orange de " + country;
+    }
 }

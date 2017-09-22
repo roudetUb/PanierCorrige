@@ -32,12 +32,12 @@ public class OrangeTest extends TestCase {
      */
     public void testGetPrice() {
         System.out.println("getPrice");
-        Orange instance = null;
+        Orange instance = new Orange();
         double expResult = 0.0;
         double result = instance.getPrice();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -45,12 +45,12 @@ public class OrangeTest extends TestCase {
      */
     public void testGetCountry() {
         System.out.println("getCountry");
-        Orange instance = null;
+        Orange instance = new Orange();
         String expResult = "";
         String result = instance.getCountry();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -58,12 +58,12 @@ public class OrangeTest extends TestCase {
      */
     public void testToString() {
         System.out.println("toString");
-        Orange instance = null;
+        Orange instance = new Orange();
         String expResult = "";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }
