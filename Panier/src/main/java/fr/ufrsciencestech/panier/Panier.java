@@ -5,8 +5,6 @@
  */
 package fr.ufrsciencestech.panier;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author roudet
@@ -49,14 +47,28 @@ public class Panier extends Observable {
     public boolean estPlein(){
         return oranges.size() == cont_max;
     }
+    
+    public void add() throws PanierPleinException{
+        if(!estPlein()){
+            Orange o;
+            if(!estVide())
+                o = oranges.get(oranges.size()-1);
+            else
+                o = new Orange(0.50, "France");
+            oranges.add(o);
+            setChanged();
+            notifyObservers(oranges.size());
+        }
+        else {
+            throw new PanierPleinException();
+        }
+    }
 	
     public void add(Orange o) throws PanierPleinException{
         if(o == null)
             return;
         if(!estPlein()){
             oranges.add(o);
-            setChanged();
-            notifyObservers(oranges.size());
         }
         else 
             throw new PanierPleinException();
@@ -69,7 +81,9 @@ public class Panier extends Observable {
             notifyObservers(oranges.size());
         }
         else 
+        {
             throw new PanierVideException();
+        }
     }
 	
     public void boycottOrigin(String country){
