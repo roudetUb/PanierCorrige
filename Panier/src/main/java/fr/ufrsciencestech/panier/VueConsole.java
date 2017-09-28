@@ -13,11 +13,31 @@ import java.util.Observer;
  * @author celine
  */
 public class VueConsole implements Observer{
+    private String trace;
+    
+    /**
+     * @return the trace
+     */
+    public String getTrace() {
+        return trace;
+    }
+
+    /**
+     * @param trace the trace to set
+     */
+    public void setTrace(String trace) {
+        this.trace = trace;
+    }
 
     public VueConsole(){
+        trace = "Contenance initiale : " + 0;
         System.out.println("Contenance initiale : " + 0);
     }
+    
+    
+    
     public void update(Observable o, Object arg) {
+        setTrace("Nouvelle contenance : " + ((Integer) arg).toString());
         System.out.println("Nouvelle contenance : " + ((Integer) arg).toString());
     }
     

@@ -21,6 +21,48 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
     private JButton inc;
     private JButton dec;
     private JLabel affiche;
+    /**
+     * @return the inc
+     */
+    public JButton getInc() {
+        return inc;
+    }
+
+    /**
+     * @param inc the inc to set
+     */
+    public void setInc(JButton inc) {
+        this.inc = inc;
+    }
+
+    /**
+     * @return the dec
+     */
+    public JButton getDec() {
+        return dec;
+    }
+
+    /**
+     * @param dec the dec to set
+     */
+    public void setDec(JButton dec) {
+        this.dec = dec;
+    }
+
+    /**
+     * @return the affiche
+     */
+    public JLabel getAffiche() {
+        return affiche;
+    }
+
+    /**
+     * @param affiche the affiche to set
+     */
+    public void setAffiche(JLabel affiche) {
+        this.affiche = affiche;
+    }
+
     
     public VueGraphiqueSimple(){
         super("Panier");
@@ -34,17 +76,20 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
 
     public void update(Observable m, Object o) {
         Integer nboranges = (Integer) o;
-        affiche.setText(nboranges.toString());
+        getAffiche().setText(nboranges.toString());
     }
 
     public void addControleur(Controleur c) {
-        inc.addActionListener(c);
-        dec.addActionListener(c);
+        getInc().addActionListener(c);
+        getDec().addActionListener(c);
     }
     
     public int getValeur(ActionEvent e){
         JButton b = (JButton) e.getSource();
-        return (b==inc) ? 1 : -1;
+        //if(b != getInc() && b != getDec())
+        //    return 0;
+        
+        return (b==getInc()) ? 1 : -1;
     }
     
 }

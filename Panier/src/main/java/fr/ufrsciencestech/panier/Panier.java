@@ -39,7 +39,10 @@ public class Panier extends Observable {
 	return cont_max;
     }
     public Orange getOranges(int i){
-	return oranges.get(i);
+        if(i >= 0 && i < oranges.size())
+            return oranges.get(i);
+        else
+            return null;
     }
     public boolean estVide(){
         return oranges.isEmpty();
@@ -114,7 +117,7 @@ public class Panier extends Observable {
         
     public boolean equals(Object o){ //equivalent si c'est dans le même ordre
         if(o == null)
-            return this == null;
+            return false;
 
         boolean result = false;
         if(o instanceof Panier){
