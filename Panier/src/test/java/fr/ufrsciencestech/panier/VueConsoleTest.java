@@ -25,7 +25,6 @@ public class VueConsoleTest {
     public void setUp() {
         vuec = new VueConsole();
         p = new Panier(2);
-        p.addObserver(vuec);
     }
 
     /**
@@ -33,14 +32,18 @@ public class VueConsoleTest {
      * @throws fr.ufrsciencestech.panier.PanierPleinException
      */
     @Test
-    public void testUpdate() throws PanierPleinException {
+    public void testUpdate() throws PanierPleinException, PanierVideException {
         System.out.println("update");
  
         assertEquals(vuec.getTrace(), "Contenance initiale : " + 0);
+        p.add();
+        assertEquals(vuec.getTrace(), "Contenance initiale : " + 0);
+        p.remove();
         
+        //si on ajoute la vue comme observateur du panier, elle se met à jour correctement
+        p.addObserver(vuec);
         p.add();
         assertEquals(vuec.getTrace(), "Nouvelle contenance : " + 1);
-        
         p.add();
         assertEquals(vuec.getTrace(), "Nouvelle contenance : " + 2);
     }

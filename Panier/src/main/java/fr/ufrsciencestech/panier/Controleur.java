@@ -21,13 +21,13 @@ public class Controleur implements ActionListener{
             try {
                 p.add();
         } catch (PanierPleinException ex) {
-            JOptionPane.showMessageDialog(null, "Panier plein", "Erreur", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Panier plein", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         else
             try {
                 p.remove();
         } catch (PanierVideException ex) {
-            JOptionPane.showMessageDialog(null, "Panier vide", "Erreur", JOptionPane.ERROR_MESSAGE) ;
+            //JOptionPane.showMessageDialog(null, "Panier vide", "Erreur", JOptionPane.ERROR_MESSAGE) ;
         }
             
     }

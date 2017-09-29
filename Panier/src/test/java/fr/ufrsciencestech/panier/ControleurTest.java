@@ -6,7 +6,6 @@
 package fr.ufrsciencestech.panier;
 
 import java.awt.event.ActionEvent;
-import javax.swing.JOptionPane;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,7 +17,7 @@ import org.junit.Ignore;
  */
 public class ControleurTest {
     Controleur c1, c2;
-    Panier p;
+    Panier p, p4;
     VueGraphiqueSimple vueg;
     ActionEvent einc;
     ActionEvent edec;
@@ -28,10 +27,11 @@ public class ControleurTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp(){
         c1 = new Controleur();
         c2 = new Controleur();
         p = new Panier(2);
+        p4 = new Panier(4);
         vueg = new VueGraphiqueSimple(); 
         c1.setPanier(p);
         c1.setVue(vueg);
@@ -85,11 +85,12 @@ public class ControleurTest {
     /**
      * Test of setPanier method, of class Controleur.
      */
-    @Ignore
+    @Test
     public void testSetPanier() {
         System.out.println("setPanier");
-        
-        c1.setPanier(p);
+        c1.setPanier(p4);
+        c1.actionPerformed(einc);
+        assertTrue(p4.getSize() == 1);
     }
 
     /**
@@ -98,7 +99,6 @@ public class ControleurTest {
     @Ignore
     public void testSetVue() {
         System.out.println("setVue");
-
         c1.setVue(vueg);
     }
     

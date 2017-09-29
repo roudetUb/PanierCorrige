@@ -106,6 +106,7 @@ public class PanierTest {
     @Test
     public void testGetOranges() throws PanierPleinException {
         System.out.println("getOranges");
+        
         //test dans un panier vide
         Orange expResult = null;
         Orange result = p2.getOranges(0);
@@ -282,6 +283,7 @@ public class PanierTest {
     /**
      * Test of remove method, of class Panier.
      * @throws fr.ufrsciencestech.panier.PanierVideException
+     * @throws fr.ufrsciencestech.panier.PanierPleinException
      */
     @Test
     public void testRemoveValide() throws PanierVideException, PanierPleinException {
@@ -388,13 +390,15 @@ public class PanierTest {
     /**
      * Test of equals method, of class Panier.
      * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.PanierVideException
      */
     @Test
     public void testEquals() throws PanierPleinException, PanierVideException {
         System.out.println("equals");
         
         //test avec null
-        assertFalse(p2.equals(null));
+        Panier pnull = null;
+        assertFalse(p2.equals(pnull));
         
         //tests de 2 paniers vides
         assertTrue(p2.getSize() == p4.getSize());

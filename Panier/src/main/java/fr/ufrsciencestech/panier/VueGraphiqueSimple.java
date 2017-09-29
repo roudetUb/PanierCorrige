@@ -86,9 +86,8 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
     
     public int getValeur(ActionEvent e){
         JButton b = (JButton) e.getSource();
-        //if(b != getInc() && b != getDec())
-        //    return 0;
-        
+        if(b != getInc() && b != getDec()) 
+            return 0;  //autre evenement que l'appui sur l'un des 2 boutons
         return (b==getInc()) ? 1 : -1;
     }
     

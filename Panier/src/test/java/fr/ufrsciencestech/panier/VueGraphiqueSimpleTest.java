@@ -6,11 +6,11 @@
 package fr.ufrsciencestech.panier;
 
 import java.awt.event.ActionEvent;
-import java.util.Observable;
 import javax.swing.JButton;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -20,6 +20,7 @@ public class VueGraphiqueSimpleTest {
     VueGraphiqueSimple vueg;
     Controleur c1, c2;
     Panier p;
+    ActionEvent einc, edec;
     
     public VueGraphiqueSimpleTest() {
     }
@@ -28,25 +29,32 @@ public class VueGraphiqueSimpleTest {
     public void setUp() {
         vueg = new VueGraphiqueSimple();
         p = new Panier(2);
-        p.addObserver(vueg);
         c1 = new Controleur();
         c2 = new Controleur();
         c1.setPanier(p);
         c1.setVue(vueg);
+        
+        einc = new ActionEvent(vueg.getInc(), 0, "inc");
+        edec = new ActionEvent(vueg.getDec(), 1, "dec");
     }
 
     /**
      * Test of update method, of class VueGraphiqueSimple.
      */
     @Test
-    public void testUpdate() throws PanierPleinException {
+    public void testUpdate() throws PanierPleinException, PanierVideException {
         System.out.println("update");
         
         assertEquals(vueg.getAffiche().getText(), "0");
+        p.add();
+        assertEquals(vueg.getAffiche().getText(), "0");
+        p.remove();
+        assertTrue(p.estVide());
         
+        //si on ajoute la vue comme observateur du panier, elle se met à jour correctement
+        p.addObserver(vueg);
         p.add();
         assertEquals(vueg.getAffiche().getText(), "1");
-        
         p.add();
         assertEquals(vueg.getAffiche().getText(), "2");
     }
@@ -54,12 +62,11 @@ public class VueGraphiqueSimpleTest {
     /**
      * Test of addControleur method, of class VueGraphiqueSimple.
      */
-    @Test
+    @Ignore
     public void testAddControleur() {
         System.out.println("addControleur");
         
-        vueg.addControleur(c1);
-        //ne pourrait se tester que si on pouvait tester l'appui sur un bouton : cf. Selenium
+        //impossible à tester avec JUnit
     }
 
     /**
@@ -69,15 +76,21 @@ public class VueGraphiqueSimpleTest {
     public void testGetValeur() {
         System.out.println("getValeur");
 
-        ActionEvent einc = new ActionEvent(vueg.getInc(), 0, "inc");
+        //bouton +
         int expResult = 1;
         int result = vueg.getValeur(einc);
         assertEquals(expResult, result);
 
-        ActionEvent edec = new ActionEvent(vueg.getDec(), 1, "dec");
+        //bouton -
         int expResult2 = -1;
         int result2 = vueg.getValeur(edec);
         assertEquals(expResult2, result2);
+        
+        //autre action
+        ActionEvent e = new ActionEvent(new JButton(), 2, "");
+        int expResult3 = 0;
+        int result3 = vueg.getValeur(e);
+        assertEquals(expResult3, result3);
     }
     
 }

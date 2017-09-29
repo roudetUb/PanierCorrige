@@ -115,6 +115,7 @@ public class Panier extends Observable {
         return tmp;
     }
         
+    @Override
     public boolean equals(Object o){ //equivalent si c'est dans le même ordre
         if(o == null)
             return false;
@@ -142,7 +143,7 @@ public class Panier extends Observable {
         return result;
     }
     
-    public static void main (String[] args){
+    /*public static void main (String[] args){
         Orange o1 = new Orange(0.50,"France");
         Orange o2 = new Orange(0.60,"Italie");
         Orange o3 = new Orange(0.40,"Espagne");
@@ -186,5 +187,5 @@ public class Panier extends Observable {
             
         }
         
-    }
+    }*/
 }
