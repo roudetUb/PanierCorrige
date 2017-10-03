@@ -18,7 +18,8 @@ import org.junit.Ignore;
  */
 public class VueGraphiqueSimpleTest {
     VueGraphiqueSimple vueg;
-    Controleur c1, c2;
+    ControleurSimple c1;
+    Controleur c2;
     Panier p;
     ActionEvent einc, edec;
     
@@ -29,8 +30,8 @@ public class VueGraphiqueSimpleTest {
     public void setUp() {
         vueg = new VueGraphiqueSimple();
         p = new Panier(2);
-        c1 = new Controleur();
-        c2 = new Controleur();
+        c1 = new ControleurSimple();
+        c2 = new ControleurSimple();
         c1.setPanier(p);
         c1.setVue(vueg);
         

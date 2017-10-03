@@ -16,7 +16,8 @@ import org.junit.Ignore;
  * @author celine
  */
 public class ControleurTest {
-    Controleur c1, c2;
+    ControleurSimple c1;
+    Controleur c2;
     Panier p, p4;
     VueGraphiqueSimple vueg;
     ActionEvent einc;
@@ -28,8 +29,8 @@ public class ControleurTest {
     
     @Before
     public void setUp(){
-        c1 = new Controleur();
-        c2 = new Controleur();
+        c1 = new ControleurSimple();
+        c2 = new ControleurSimple();
         p = new Panier(2);
         p4 = new Panier(4);
         vueg = new VueGraphiqueSimple(); 

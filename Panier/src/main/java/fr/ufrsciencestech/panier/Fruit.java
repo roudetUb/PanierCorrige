@@ -5,12 +5,12 @@
  */
 package fr.ufrsciencestech.panier;
 
-import java.awt.event.ActionListener;
 /**
  *
  * @author celine
  */
-public interface Controleur extends ActionListener{
-    public void setPanier(Panier p);
-    public void setVue(VueGraphique vg);
+public interface Fruit {
+    public boolean isSeedless();
+    public double getPrice();
+    public String getCountry();
 }

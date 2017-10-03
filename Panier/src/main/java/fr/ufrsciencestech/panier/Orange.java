@@ -9,7 +9,7 @@ package fr.ufrsciencestech.panier;
  *
  * @author roudet
  */
-public class Orange {
+public class Orange implements Fruit{
     private double price;
     private String country;
 	
@@ -45,16 +45,21 @@ public class Orange {
 	return country;
     }
 
+    @Override
     public String toString(){
         return "Orange de " + country;
     }
     
     @Override
     public boolean equals(Object o){
-        if(o != null){
+        if(o != null && o instanceof Orange){
             Orange or = (Orange) o;
             return (price == or.price && country.equals(or.country));
         }
+        return false;
+    }
+
+    public boolean isSeedless() {
         return false;
     }
 }

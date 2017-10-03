@@ -15,7 +15,8 @@ import static org.junit.Assert.*;
  */
 public class PanierTest {
     Panier p0, p2, p2plein, p3, p4;
-    Orange o1, o2, o3;
+    Fruit o1, o2, o3;
+    Fruit b1, b2;
     
     public PanierTest() {
     }
@@ -32,6 +33,9 @@ public class PanierTest {
 	o1 = new Orange(0.50, "France");
 	o2 = new Orange(0.60, "Espagne");
 	o3 = new Orange(0.70, "USA");
+        
+        b1 = new Banane("France");
+	b2 = new Banane("Espagne");
         
         p2plein.add();
         p2plein.add();
@@ -108,18 +112,18 @@ public class PanierTest {
         System.out.println("getOranges");
         
         //test dans un panier vide
-        Orange expResult = null;
-        Orange result = p2.getOranges(0);
-        Orange result2 = p2.getOranges(-1);
-        Orange result3 = p2.getOranges(1);
+        Fruit expResult = null;
+        Fruit result = p2.getFruits(0);
+        Fruit result2 = p2.getFruits(-1);
+        Fruit result3 = p2.getFruits(1);
         assertEquals(expResult, result);
         assertEquals(expResult, result2);
         assertEquals(expResult, result3);
         
         //test dans un panier plein
-        Orange expResult4 = new Orange();
-        Orange result4 = p2plein.getOranges(0);
-        Orange result5 = p2plein.getOranges(1);
+        Fruit expResult4 = new Orange();
+        Fruit result4 = p2plein.getFruits(0);
+        Fruit result5 = p2plein.getFruits(1);
         assertEquals(expResult4, result4);
         assertEquals(expResult4, result5);
     }
@@ -331,12 +335,12 @@ public class PanierTest {
 	p4.boycottOrigin("USA");  //2 passages dans le while et aucun retrait (car aucune orange du pays boycotté)
 	assertTrue(p4.getSize() == 2);
 		
-	assertEquals(p4.getOranges(0).getCountry(), "France");
+	assertEquals(p4.getFruits(0).getCountry(), "France");
 	p4.boycottOrigin("France");  //2 passages dans le while et 1 retrait (car 1 orange du pays boycotté)
 	assertTrue(p4.getSize() == 1);
 		
 	//DT 1-chemin
-	assertEquals(p4.getOranges(0).getCountry(), "Espagne");
+	assertEquals(p4.getFruits(0).getCountry(), "Espagne");
 	p4.boycottOrigin("France");  //1 passage dans le while et 0 retrait : DT2
 	assertTrue(p4.getSize() == 1); 
 		
@@ -442,6 +446,26 @@ public class PanierTest {
         p4.add(o2);
         assertTrue(p2.getSize() != p4.getSize());
         assertFalse(p2.equals(p4));
+    }
+    
+     /**
+     * Test of nbFruits method, of class Panier.
+     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     */
+    @Test
+    public void testNbFruits() throws PanierPleinException{
+        System.out.println("nbFruits");
+        
+        p4.add(o1);
+        p4.add(b1);
+        p4.add(o2);
+        p4.add(b2);
+        int expOranges = 2;
+        int expBananes = 2;
+        int resultOranges = p4.nbFruits(o1);
+        int resultBananes = p4.nbFruits(b1);
+        assertTrue(expOranges==resultOranges);
+        assertTrue(expBananes==resultBananes);
     }
     
 }
