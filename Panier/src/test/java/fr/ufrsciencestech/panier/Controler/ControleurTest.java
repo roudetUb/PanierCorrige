@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Controler;
 
+import fr.ufrsciencestech.panier.View.VueGraphiqueSimple;
+import fr.ufrsciencestech.panier.Model.PanierPleinException;
+import fr.ufrsciencestech.panier.Controler.ControleurSimple;
+import fr.ufrsciencestech.panier.Controler.Controleur;
+import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.event.ActionEvent;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +21,8 @@ import org.junit.Ignore;
  * @author celine
  */
 public class ControleurTest {
-    Controleur c1, c2;
+    ControleurSimple c1;
+    Controleur c2;
     Panier p, p4;
     VueGraphiqueSimple vueg;
     ActionEvent einc;
@@ -28,8 +34,8 @@ public class ControleurTest {
     
     @Before
     public void setUp(){
-        c1 = new Controleur();
-        c2 = new Controleur();
+        c1 = new ControleurSimple();
+        c2 = new ControleurSimple();
         p = new Panier(2);
         p4 = new Panier(4);
         vueg = new VueGraphiqueSimple(); 

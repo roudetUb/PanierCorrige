@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.View;
 
 import java.util.Observable;
 

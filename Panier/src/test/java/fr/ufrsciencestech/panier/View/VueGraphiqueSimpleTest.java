@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.View;
 
+import fr.ufrsciencestech.panier.Model.PanierVideException;
+import fr.ufrsciencestech.panier.Model.PanierPleinException;
+import fr.ufrsciencestech.panier.Controler.ControleurSimple;
+import fr.ufrsciencestech.panier.Controler.Controleur;
+import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import org.junit.Before;
-import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
 
@@ -18,7 +22,8 @@ import org.junit.Ignore;
  */
 public class VueGraphiqueSimpleTest {
     VueGraphiqueSimple vueg;
-    Controleur c1, c2;
+    ControleurSimple c1;
+    Controleur c2;
     Panier p;
     ActionEvent einc, edec;
     
@@ -29,8 +34,8 @@ public class VueGraphiqueSimpleTest {
     public void setUp() {
         vueg = new VueGraphiqueSimple();
         p = new Panier(2);
-        c1 = new Controleur();
-        c2 = new Controleur();
+        c1 = new ControleurSimple();
+        c2 = new ControleurSimple();
         c1.setPanier(p);
         c1.setVue(vueg);
         
@@ -40,6 +45,8 @@ public class VueGraphiqueSimpleTest {
 
     /**
      * Test of update method, of class VueGraphiqueSimple.
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierVideException
      */
     @Ignore  //ignore pour fonctionner dans Jenkins
     public void testUpdate() throws PanierPleinException, PanierVideException {

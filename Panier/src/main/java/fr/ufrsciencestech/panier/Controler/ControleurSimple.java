@@ -3,19 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Controler;
 
+import fr.ufrsciencestech.panier.Model.Panier;
+import fr.ufrsciencestech.panier.Model.PanierPleinException;
+import fr.ufrsciencestech.panier.Model.PanierVideException;
+import fr.ufrsciencestech.panier.View.VueGraphique;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author celine
  */
-public class Controleur implements ActionListener{
+public class ControleurSimple implements Controleur{
     private Panier p;
     private VueGraphique vg;
+    
     public void actionPerformed(ActionEvent e){
         if(vg.getValeur(e) == 1)
             try {

@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Model;
 import java.util.*;
 /**
  *
  * @author roudet
  */
 public class Panier extends Observable {
-    private ArrayList<Orange> oranges;
+    private ArrayList<Fruit> fruits;
     private int cont_max;   //nb maximum d'oranges que peut contenir le panier
 	
     public Panier(int max){
 	cont_max = max;
-	oranges = new ArrayList<Orange>(max);  //panier vide
+	fruits = new ArrayList<Fruit>(max);  //panier vide
     }
+    
     public double getPrice(){
 	double total=0;
-	for(int i = 0 ; i < oranges.size() ; i++)
-            total += oranges.get(i).getPrice();
+	for(int i = 0 ; i < getFruits().size() ; i++)
+            total += getFruits().get(i).getPrice();
 	return total;
 		
 	//ou :
@@ -32,46 +33,61 @@ public class Panier extends Observable {
 	}
 	return total;*/
     }
-    public int getSize(){
-        return oranges.size();
+    
+    public ArrayList<Fruit> getFruits() {
+        return fruits;
     }
+
+    public void setFruits(ArrayList<Fruit> fruits) {
+        this.fruits = fruits;
+    }
+    
+    public int getSize(){
+        return getFruits().size();
+    }
+    
     public int getContMax(){
 	return cont_max;
     }
-    public Orange getOranges(int i){
-        if(i >= 0 && i < oranges.size())
-            return oranges.get(i);
+    
+    public Fruit getFruits(int i){
+        if(i >= 0 && i < getFruits().size())
+            return getFruits().get(i);
         else
             return null;
     }
+    
     public boolean estVide(){
-        return oranges.isEmpty();
+        return getFruits().isEmpty();
     }
+    
     public boolean estPlein(){
-        return oranges.size() == cont_max;
+        return getFruits().size() == cont_max;
     }
     
     public void add() throws PanierPleinException{
         if(!estPlein()){
-            Orange o;
+            Fruit o;
             if(!estVide())
-                o = oranges.get(oranges.size()-1);
+                o = getFruits().get(getFruits().size()-1);
             else
-                o = new Orange(0.50, "France");
-            oranges.add(o);
+                o = new Orange();
+            getFruits().add(o);
             setChanged();
-            notifyObservers(oranges.size());
+            notifyObservers(this);
         }
         else {
             throw new PanierPleinException();
         }
     }
 	
-    public void add(Orange o) throws PanierPleinException{
+    public void add(Fruit o) throws PanierPleinException{
         if(o == null)
             return;
         if(!estPlein()){
-            oranges.add(o);
+            getFruits().add(o);
+            setChanged();
+            notifyObservers(this);
         }
         else 
             throw new PanierPleinException();
@@ -79,9 +95,9 @@ public class Panier extends Observable {
         
     public void remove() throws PanierVideException{
         if(!estVide()){
-            oranges.remove(oranges.size()-1);
+            getFruits().remove(getFruits().size()-1);
             setChanged();
-            notifyObservers(oranges.size());
+            notifyObservers(this);
         }
         else 
         {
@@ -91,9 +107,9 @@ public class Panier extends Observable {
 	
     public void boycottOrigin(String country){
 	int i = 0;					//A
-	while(i < oranges.size()){			//B
-            if(oranges.get(i).getCountry().equals(country)) //C
-		oranges.remove(i);			//D
+	while(i < getFruits().size()){			//B
+            if(getFruits().get(i).getCountry().equals(country)) //C
+		getFruits().remove(i);			//D
             else								 
 		i++ ;					//E
         }
@@ -104,14 +120,14 @@ public class Panier extends Observable {
         String tmp = "[";
         int i = 0;
         while(i < getSize()-1){
-            tmp += oranges.get(i).toString();
+            tmp += getFruits().get(i).toString();
             tmp += ", ";
             i++;
         }
         if(estVide())
             tmp += "]";
         else
-            tmp += oranges.get(oranges.size()-1).toString() + "]";
+            tmp += getFruits().get(getFruits().size()-1).toString() + "]";
         return tmp;
     }
         
@@ -128,8 +144,8 @@ public class Panier extends Observable {
                 int i=0;
                 while(i < p.getSize())
                 {					 
-                    if( p.oranges.get(i).getPrice() != this.oranges.get(i).getPrice() ||
-                        !p.oranges.get(i).getCountry().equals(this.oranges.get(i).getCountry()) )
+                    if( p.getFruits().get(i).getPrice() != this.getFruits().get(i).getPrice() ||
+                        !p.fruits.get(i).getCountry().equals(this.fruits.get(i).getCountry()) )
                             break;				
                     i++ ;	
                 }
@@ -138,9 +154,19 @@ public class Panier extends Observable {
             }
             else //les 2 paniers n'ont pas le même nb d'oranges
                 result = false;
-            
         }
         return result;
+    }
+    
+    public int nbFruits(Fruit f){
+        int cpt = 0;
+        int i = 0;					
+	while(i < getFruits().size()){	
+            if(getFruits().get(i).equals(f)) 
+		cpt++;									 
+            i++ ;					
+        }
+        return cpt;
     }
     
     /*public static void main (String[] args){
