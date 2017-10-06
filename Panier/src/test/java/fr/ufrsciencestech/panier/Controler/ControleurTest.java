@@ -7,12 +7,9 @@ package fr.ufrsciencestech.panier.Controler;
 
 import fr.ufrsciencestech.panier.View.VueGraphiqueSimple;
 import fr.ufrsciencestech.panier.Model.PanierPleinException;
-import fr.ufrsciencestech.panier.Controler.ControleurSimple;
-import fr.ufrsciencestech.panier.Controler.Controleur;
 import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.event.ActionEvent;
 import org.junit.Before;
-import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
 
@@ -63,7 +60,7 @@ public class ControleurTest {
     
     /**
      * Test of actionPerformed method, of class Controleur.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Ignore   //ignore pour fonctionner dans Jenkins
     public void testActionPerformedPlein() throws PanierPleinException {

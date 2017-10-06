@@ -62,8 +62,8 @@ public class Macedoine implements Fruit {
     public double getPrice() {
         //somme des fruits qui la composent + 1.0 euro pour la preparation
         double total= 0.0;
-        if(getFruits().isEmpty())
-            return total;
+        //if(getFruits().isEmpty())
+        //    return total;
         
 	for(int i = 0 ; i < getFruits().size() ; i++)
             total += getFruits().get(i).getPrice();

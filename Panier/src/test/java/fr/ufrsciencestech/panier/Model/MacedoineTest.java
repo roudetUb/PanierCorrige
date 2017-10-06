@@ -20,6 +20,7 @@ public class MacedoineTest {
     Ananas a1;
     Cerise c1;
     Fraise f1;
+    Jus jo;
 
     
     @Before
@@ -34,6 +35,8 @@ public class MacedoineTest {
         rouge = new Macedoine(c1);
         f1 = new Fraise();
         rouge.add(f1);
+        
+        jo = new Jus(new Orange());
     }
 
     /**
@@ -119,6 +122,12 @@ public class MacedoineTest {
         double expResult3 = 2.5+1.0+2.5+1.0;
         double result3 = ile.getPrice();
         assertEquals(expResult3, result3, 0.0);
+        
+        //macedoine a 2 fruits + 1 macedoine + 1jus
+        ile.add(jo);
+        double expResult4 = 2.5+1.0+2.5+1.0+0.5+0.5;
+        double result4 = ile.getPrice();
+        assertEquals(expResult4, result4, 0.0);
     }
 
     /**

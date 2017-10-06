@@ -61,14 +61,14 @@ public class TestMVC {
         vuel.addListeAdd(ile);
         
         Fruit rouge = (Fruit)new Macedoine(new Cerise());
-        Fraise f1 = new Fraise();
-        ((Macedoine)rouge).add(f1);
+        Jus jf1 = new Jus(new Fraise());
+        ((Macedoine)rouge).add(jf1);
         vuel.addListeAdd(rouge);
   
         Fruit jo1 = (Fruit)new Jus(new Orange());
         vuel.addListeAdd(jo1);
-        Fruit jmr = (Fruit)new Jus(rouge);
-        vuel.addListeAdd(jmr);
+        Fruit jmi = (Fruit)new Jus(ile);
+        vuel.addListeAdd(jmi);
         
         Controleur cl = new ControleurListe();
         cl.setPanier(p);

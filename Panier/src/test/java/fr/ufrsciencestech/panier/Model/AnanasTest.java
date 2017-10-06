@@ -34,6 +34,12 @@ public class AnanasTest {
         double expResult = 2.0;
         double result = instance.getPrice();
         assertEquals(expResult, result, 0.0);
+        
+        //prix négatif
+        Ananas instance2 = new Ananas(-2.0, "Bresil");
+        double expResult2 = 2.0;
+        double result2 = instance2.getPrice();
+        assertTrue(expResult2 == result2);
     }
 
     /**
@@ -47,6 +53,12 @@ public class AnanasTest {
         String expResult = "Bresil";
         String result = instance.getCountry();
         assertEquals(expResult, result);
+        
+        //String vide
+        Ananas instance2 = new Ananas(0.3, "");
+        String expResult2 = "Bresil";
+        String result2 = instance2.getCountry();
+        assertEquals(expResult2, result2);
     }
 
     /**

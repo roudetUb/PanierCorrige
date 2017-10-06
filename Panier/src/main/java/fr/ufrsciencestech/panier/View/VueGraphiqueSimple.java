@@ -6,11 +6,9 @@
 package fr.ufrsciencestech.panier.View;
 
 import fr.ufrsciencestech.panier.Controler.Controleur;
-import fr.ufrsciencestech.panier.Model.Fruit;
 import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
