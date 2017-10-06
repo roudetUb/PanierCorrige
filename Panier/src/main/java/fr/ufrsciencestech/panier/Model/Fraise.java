@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Model;
 
 /**
  *
  * @author celine
  */
-public class Banane implements Fruit{
+public class Fraise implements Fruit{
     private String country;
-    private final double price = 0.50;
+    private final double price = 1.5;
     
-    public Banane() 
+    public Fraise() 
     {
         this.country="France";
     }
     
-    public Banane(String country) 
+    public Fraise(String country) 
     {
         this.country=country;
     }
@@ -32,13 +32,13 @@ public class Banane implements Fruit{
 
     @Override
     public String toString(){
-        return "Banane de " + country;
+        return "Fraise";
     }
     
     @Override
     public boolean equals(Object o){
-        if(o != null && o instanceof Banane){
-            Banane or = (Banane) o;
+        if(o != null && o instanceof Fraise){
+            Fraise or = (Fraise) o;
             return (country.equals(or.country));
         }
         return false;
@@ -47,5 +47,7 @@ public class Banane implements Fruit{
     public boolean isSeedless() {
         return true;
     }
+    
+    
     
 }

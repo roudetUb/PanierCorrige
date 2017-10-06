@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.View;
 
+import fr.ufrsciencestech.panier.Controler.Controleur;
+import fr.ufrsciencestech.panier.Model.Fruit;
+import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
@@ -16,6 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -25,72 +30,44 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
     private JButton inc;
     private JButton dec;
     private JComboBox<Fruit> listeAdd;
-    private JLabel affiche;
-    /**
-     * @return the inc
-     */
+    private JTextArea affichenb;
+
     public JButton getInc() {
         return inc;
     }
-
-    /**
-     * @param inc the inc to set
-     */
     public void setInc(JButton inc) {
         this.inc = inc;
     }
-
-    /**
-     * @return the dec
-     */
     public JButton getDec() {
         return dec;
     }
-
-    /**
-     * @param dec the dec to set
-     */
     public void setDec(JButton dec) {
         this.dec = dec;
     }
-
-    /**
-     * @return the affiche
-     */
-    public JLabel getAffiche() {
-        return affiche;
+    public JTextArea getAffiche() {
+        return affichenb;
+    }
+    public void setAffiche(JTextArea affiche) {
+        this.affichenb = affiche;
     }
 
-    /**
-     * @param affiche the affiche to set
-     */
-    public void setAffiche(JLabel affiche) {
-        this.affiche = affiche;
-    }
-    
-    /**
-     * @return the listeAdd
-     */
     public JComboBox<Fruit> getListeAdd() {
         return listeAdd;
     }
-
-    /**
-     * @param listeAdd the listeAdd to set
-     */
     public void setListeAdd(JComboBox<Fruit> listeAdd) {
         this.listeAdd = listeAdd;
     }
     
     public void addListeAdd(Fruit f){
         listeAdd.addItem(f);
+        affichenb.setText(affichenb.getText() + "0 " + f + " a " + f.getPrice() + " euros\n" );
     }
 
     public VueGraphiqueListe(){
         super("Panier");
         inc = new JButton("+");
         dec = new JButton("-");
-        affiche = new JLabel("0", JLabel.CENTER);
+        affichenb = new JTextArea("Panier de 0 fruits\n");
         
         listeAdd = new JComboBox<Fruit>();
         JPanel panelN = new JPanel();
@@ -100,12 +77,18 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
         add(panelN, BorderLayout.NORTH);
 
         add(dec, BorderLayout.SOUTH);
-        add(affiche, BorderLayout.CENTER);
+        add(affichenb, BorderLayout.CENTER);
     }
 
     public void update(Observable m, Object o) {
-        Integer nbfruits = (Integer) o;
-        getAffiche().setText(nbfruits.toString());
+        Panier p = (Panier) o;
+        getAffiche().setText("Panier de " + ((Integer)p.getFruits().size()).toString() + " fruits : " + p.getPrice() + " euros\n");
+        for(int i = 0 ; i < listeAdd.getItemCount() ; i++)
+        {
+            Fruit f = (Fruit) listeAdd.getItemAt(i);
+            int nb = p.nbFruits(f);
+            affichenb.setText(affichenb.getText() + nb + " " + listeAdd.getItemAt(i) + " a " + listeAdd.getItemAt(i).getPrice() + " euros\n" );
+        }
     }
 
     public void addControleur(Controleur c) {
@@ -119,5 +102,7 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
             return 0;  //autre evenement que l'appui sur l'un des 2 boutons
         return (b==getInc()) ? 1 : -1;
     }
+
+   
     
 }

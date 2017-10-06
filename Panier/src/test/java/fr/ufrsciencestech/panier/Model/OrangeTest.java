@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Model;
 
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
@@ -80,10 +80,22 @@ public class OrangeTest {
         
         //String non vide
         Orange instance = new Orange();
-        String expResult = "Orange de France";
+        String expResult = "Orange";
         String result = instance.toString();
         assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isSeedless method, of class Orange.
+     */
+    @Test
+    public void testIsSeedless() {
+        System.out.println("isSeedless");
 
+        Fruit instanceavecpepins = new Orange();
+        boolean expResult1 = false;
+        boolean result1 = instanceavecpepins.isSeedless();
+        assertTrue(expResult1 == result1);
     }
     
     /**

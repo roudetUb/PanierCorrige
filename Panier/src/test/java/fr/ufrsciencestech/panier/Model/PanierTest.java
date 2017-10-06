@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Model;
 
+import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -43,7 +44,7 @@ public class PanierTest {
 
     /**
      * Test of getPrice method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testGetPrice() throws PanierPleinException {
@@ -75,7 +76,7 @@ public class PanierTest {
 
     /**
      * Test of getSize method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testGetSize() throws PanierPleinException {
@@ -105,7 +106,7 @@ public class PanierTest {
     
     /**
      * Test of getOranges method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testGetOranges() throws PanierPleinException {
@@ -131,7 +132,7 @@ public class PanierTest {
 
     /**
      * Test of getContMax method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testGetContMax() throws PanierPleinException {
@@ -153,10 +154,22 @@ public class PanierTest {
         int result3 = p2.getContMax();
         assertTrue(expResult3 == result3);
     }
+    
+     /**
+     * Test of setFruit method, of class Panier.
+     */
+    @Test
+    public void testSetFruit() {
+        System.out.println("setFruit");
+        
+        ArrayList<Fruit> fruitsvide = new ArrayList<Fruit>(4);
+        p2.setFruits(fruitsvide);
+        assertTrue(p2.estVide());
+    }
 
     /**
      * Test of estVide method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testEstVide() throws PanierPleinException {
@@ -182,7 +195,7 @@ public class PanierTest {
 
     /**
      * Test of estPlein method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testEstPlein() throws PanierPleinException {
@@ -208,7 +221,7 @@ public class PanierTest {
 
     /**
      * Test of add method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testAddValide_0args() throws PanierPleinException {
@@ -237,7 +250,7 @@ public class PanierTest {
     
     /**
      * Test of add method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test(expected=PanierPleinException.class)
     public void testAddInvalide_0args() throws PanierPleinException {
@@ -249,7 +262,7 @@ public class PanierTest {
 
     /**
      * Test of add method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testAddValide_Orange() throws PanierPleinException {
@@ -275,7 +288,7 @@ public class PanierTest {
     
     /**
      * Test of add method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test(expected=PanierPleinException.class)
     public void testAddInvalide_Orange() throws PanierPleinException {
@@ -286,8 +299,8 @@ public class PanierTest {
 
     /**
      * Test of remove method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierVideException
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierVideException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testRemoveValide() throws PanierVideException, PanierPleinException {
@@ -309,7 +322,7 @@ public class PanierTest {
     
     /**
      * Test of remove method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierVideException
+     * @throws fr.ufrsciencestech.panier.Model.PanierVideException
      */
     @Test(expected=PanierVideException.class)
     public void testRemoveInvalide() throws PanierVideException {
@@ -319,7 +332,7 @@ public class PanierTest {
 
     /**
      * Test of boycottOrigin method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testBoycottOrigin() throws PanierPleinException {
@@ -366,7 +379,7 @@ public class PanierTest {
 
     /**
      * Test of toString method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testToString() throws PanierPleinException {
@@ -379,22 +392,22 @@ public class PanierTest {
         
         //test panier à 1 element
         p2.add(o2);
-        String expResult = "[Orange de Espagne]";
+        String expResult = "[Orange]";
         String result = p2.toString();
         assertEquals(expResult, result);
         
         //test panier plein
         p4.add(o1);
-        p4.add(o2);
-        String expResult2 = "[Orange de France, Orange de Espagne]";
+        p4.add(b2);
+        String expResult2 = "[Orange, Banane]";
         String result2 = p4.toString();
         assertEquals(expResult2, result2);
     }
 
     /**
      * Test of equals method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
-     * @throws fr.ufrsciencestech.panier.PanierVideException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierVideException
      */
     @Test
     public void testEquals() throws PanierPleinException, PanierVideException {
@@ -450,7 +463,7 @@ public class PanierTest {
     
      /**
      * Test of nbFruits method, of class Panier.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
      */
     @Test
     public void testNbFruits() throws PanierPleinException{
@@ -460,8 +473,8 @@ public class PanierTest {
         p4.add(b1);
         p4.add(o2);
         p4.add(b2);
-        int expOranges = 2;
-        int expBananes = 2;
+        int expOranges = 1;
+        int expBananes = 1;
         int resultOranges = p4.nbFruits(o1);
         int resultBananes = p4.nbFruits(b1);
         assertTrue(expOranges==resultOranges);

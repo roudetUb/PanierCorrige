@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.View;
 
-import java.util.Observable;
+import fr.ufrsciencestech.panier.Model.PanierVideException;
+import fr.ufrsciencestech.panier.Model.PanierPleinException;
+import fr.ufrsciencestech.panier.Model.Panier;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -29,7 +31,8 @@ public class VueConsoleTest {
 
     /**
      * Test of update method, of class VueConsole.
-     * @throws fr.ufrsciencestech.panier.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
+     * @throws fr.ufrsciencestech.panier.Model.PanierVideException
      */
     @Test
     public void testUpdate() throws PanierPleinException, PanierVideException {

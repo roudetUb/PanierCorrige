@@ -1,16 +1,17 @@
+package fr.ufrsciencestech.panier.View;
+
+import java.util.Observable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
 
 /**
  *
  * @author celine
  */
-public interface Fruit {
-    public boolean isSeedless();
-    public double getPrice();
-    public String getCountry();
+public interface Vue {
+    public void update(Observable m, Object o);
 }

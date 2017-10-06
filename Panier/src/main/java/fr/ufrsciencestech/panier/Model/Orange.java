@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Model;
 
 /**
  *
@@ -47,7 +47,7 @@ public class Orange implements Fruit{
 
     @Override
     public String toString(){
-        return "Orange de " + country;
+        return "Orange";
     }
     
     @Override

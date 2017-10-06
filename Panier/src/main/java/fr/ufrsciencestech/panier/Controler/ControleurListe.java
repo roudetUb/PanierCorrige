@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Controler;
 
+import fr.ufrsciencestech.panier.Model.Panier;
+import fr.ufrsciencestech.panier.Model.Fruit;
+import fr.ufrsciencestech.panier.Model.PanierPleinException;
+import fr.ufrsciencestech.panier.Model.PanierVideException;
+import fr.ufrsciencestech.panier.View.VueGraphique;
+import fr.ufrsciencestech.panier.View.VueGraphiqueListe;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 

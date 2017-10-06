@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.View;
 
+import fr.ufrsciencestech.panier.Controler.Controleur;
+import fr.ufrsciencestech.panier.Model.Fruit;
+import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -76,9 +79,8 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
     }
 
     public void update(Observable m, Object o) {
-        //ArrayList<Fruit> fruits = (ArrayList<Fruit>) o;
-        Integer nbfruits = (Integer) o;
-        getAffiche().setText(nbfruits.toString());
+        Panier p = (Panier) o;
+        getAffiche().setText(((Integer)p.getFruits().size()).toString());
     }
 
     public void addControleur(Controleur c) {
