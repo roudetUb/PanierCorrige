@@ -13,71 +13,41 @@ import static org.junit.Assert.*;
  *
  * @author celine
  */
-public class CeriseTest {
-    Cerise c1, c2, c3;
+public class CeriseTest extends FruitSimpleTest{
+    
+    // implementation of the abstract factory methods
+    FruitSimple createFruit(double price, String country) {
+        return new Cerise(price, country);
+    }
+    
+    FruitSimple createFruitNull(){
+        return null;
+    }
     
     @Before
-    public void setUp() throws Exception {
-        c1 = new Cerise("France");
-	c2 = new Cerise("Italie");
-	c3 = new Cerise("Allemagne");
+    public void setUp() {
     }
-
-    /**
-     * Test of getPrice method, of class Cerise.
-     */
+    
     @Test
-    public void testGetPrice() {
-        System.out.println("getPrice");
-        
-        Cerise instance = new Cerise();
-        double expResult = 1.0;
-        double result = instance.getPrice();
-        assertEquals(expResult, result, 0.0);
-    }
-
-    /**
-     * Test of getCountry method, of class Cerise.
-     */
-    @Test
-    public void testGetCountry() {
-        System.out.println("getCountry");
-        
-        Cerise instance = new Cerise();
+    public void testChaineVide() {
+        System.out.println("chaine vide");
+        Cerise instance = new Cerise(0.5,"");
         String expResult = "France";
         String result = instance.getCountry();
         assertEquals(expResult, result);
     }
 
+    
     /**
      * Test of toString method, of class Cerise.
      */
     @Test
     public void testToString() {
         System.out.println("toString");
-        
         Cerise instance = new Cerise();
         String expResult = "Cerise";
         String result = instance.toString();
         assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of equals method, of class Cerise.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
- 
-        //test avec une cerise null
-        Cerise cnull = null;
-        assertFalse(c1.equals(cnull));
-        
-        //test de 2 cerises equivalentes
-        assertTrue(c1.equals(new Cerise()));
-        
-        //test de 2 cerises non equivalentes : origine differente
-        assertFalse(c1.equals(new Cerise("Espagne")));
     }
 
     /**
@@ -86,7 +56,6 @@ public class CeriseTest {
     @Test
     public void testIsSeedless() {
         System.out.println("isSeedless");
-        
         Fruit instanceavecpepins = new Cerise();
         boolean expResult1 = false;
         boolean result1 = instanceavecpepins.isSeedless();

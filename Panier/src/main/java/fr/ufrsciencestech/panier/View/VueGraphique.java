@@ -15,6 +15,7 @@ import java.util.Observer;
  * @author celine
  */
 public interface VueGraphique extends Vue,Observer {
+    @Override
     public void update(Observable m, Object o);
     public void addControleur(Controleur c);
     public int getValeur(ActionEvent e);

@@ -13,38 +13,25 @@ import static org.junit.Assert.*;
  *
  * @author celine
  */
-public class FraiseTest {
-    Fraise f1, f2, f3;
+public class FraiseTest extends FruitSimpleTest{
+    // implementation of the abstract factory methods
+    FruitSimple createFruit(double price, String country) {
+        return new Fraise(price, country);
+    }
+    
+    FruitSimple createFruitNull(){
+        return null;
+    }
     
     @Before
-    public void setUp() throws Exception {
-        f1 = new Fraise("France");
-	f2 = new Fraise("Italie");
-	f3 = new Fraise("Allemagne");
+    public void setUp() {
     }
-
-    /**
-     * Test of getPrice method, of class Fraise.
-     */
+    
     @Test
-    public void testGetPrice() {
-        System.out.println("getPrice");
-        
-        Fraise instance = new Fraise();
-        double expResult = 1.5;
-        double result = instance.getPrice();
-        assertEquals(expResult, result, 0.0);
-    }
-
-    /**
-     * Test of getCountry method, of class Fraise.
-     */
-    @Test
-    public void testGetCountry() {
-        System.out.println("getCountry");
-        
-        Fraise instance = new Fraise();
-        String expResult = "France";
+    public void testChaineVide() {
+        System.out.println("chaine vide");
+        Fraise instance = new Fraise(4.0,"");
+        String expResult = "Espagne";
         String result = instance.getCountry();
         assertEquals(expResult, result);
     }
@@ -55,29 +42,10 @@ public class FraiseTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        
         Fraise instance = new Fraise();
         String expResult = "Fraise";
         String result = instance.toString();
         assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of equals method, of class Fraise.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        
-        //test avec une Fraise null
-        Fraise cnull = null;
-        assertFalse(f1.equals(cnull));
-        
-        //test de 2 cerises equivalentes
-        assertTrue(f1.equals(new Fraise()));
-        
-        //test de 2 cerises non equivalentes : origine differente
-        assertFalse(f1.equals(new Fraise("Espagne")));
     }
 
     /**
@@ -86,7 +54,6 @@ public class FraiseTest {
     @Test
     public void testIsSeedless() {
         System.out.println("isSeedless");
-        
         Fraise instance = new Fraise();
         boolean expResult = true;
         boolean result = instance.isSeedless();

@@ -12,7 +12,6 @@ import fr.ufrsciencestech.panier.Model.PanierVideException;
 import fr.ufrsciencestech.panier.View.VueGraphique;
 import fr.ufrsciencestech.panier.View.VueGraphiqueListe;
 import java.awt.event.ActionEvent;
-import javax.swing.JButton;
 
 /**
  *

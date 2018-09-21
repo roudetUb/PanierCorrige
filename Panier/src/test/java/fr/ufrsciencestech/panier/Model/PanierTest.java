@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  *
@@ -35,13 +39,43 @@ public class PanierTest {
 	o2 = new Orange(0.60, "Espagne");
 	o3 = new Orange(0.70, "USA");
         
-        b1 = new Banane("France");
-	b2 = new Banane("Espagne");
+        b1 = new Banane(1.0, "France");
+	b2 = new Banane(1.5, "Espagne");
         
         p2plein.add();
         p2plein.add();
     }
 
+    //Mocks :
+    //Attention, on ne peut pas mocker les méthodes equals, hashCode, toString, 
+    //une classe ou une méthode final, une méthode statique ou privée
+    @Test
+    public void testGetPriceMock() throws PanierPleinException, PanierVideException {
+        System.out.println("GetPrice Mock");
+        Fruit mocko1 = mock(Fruit.class);
+        Fruit mocko2 = mock(Fruit.class);
+        
+        when(mocko1.getPrice()).thenReturn(1.0);   //comportement des doublures (stubbing)
+        when(mocko2.getPrice()).thenReturn(0.5); 
+
+        Panier panier = new Panier(3);
+        panier.add(mocko1);
+        panier.add(mocko2);
+        double res = panier.getPrice();
+
+        //tests d’interaction :
+        verify(mocko1, times(1)).getPrice();    //getPrice() doit avoir été appelé exactement 1 fois
+        verify(mocko2, times(1)).getPrice();
+        assertTrue(res == 1.5);
+        
+        panier.remove();
+        res = panier.getPrice();
+        //tests d’interaction :
+        verify(mocko1, times(2)).getPrice();    //getPrice() doit avoir été appelé exactement 2 fois
+        verify(mocko2, times(1)).getPrice();
+        assertTrue(res == 1.0);
+    }
+    
     /**
      * Test of getPrice method, of class Panier.
      * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
@@ -54,7 +88,7 @@ public class PanierTest {
         double result = p3.getPrice();
         assertTrue(expResult == result);
 
-        //panier à un élément à 0.50
+        //panier à un element à 0.50
         p3.add(o1);
         double expResult2 = 0.50;
         double result2 = p3.getPrice();
@@ -337,6 +371,24 @@ public class PanierTest {
     @Test
     public void testBoycottOrigin() throws PanierPleinException {
         System.out.println("boycottOrigin");
+        //mock
+        Fruit mocko1 = mock(Fruit.class);
+        Fruit mocko2 = mock(Fruit.class);
+        
+        when(mocko1.getCountry()).thenReturn("France");   //comportement des doublures (stubbing)
+        when(mocko2.getCountry()).thenReturn("Espagne"); 
+
+        Panier panier = new Panier(3);
+        panier.add(mocko1);
+        panier.add(mocko2);
+        panier.boycottOrigin("Espagne");
+
+        //tests d’interaction :
+        verify(mocko1, times(1)).getCountry();    //getCountry() doit avoir été appelé exactement 1 fois
+        verify(mocko2, times(1)).getCountry();
+        assertTrue(panier.getSize() == 1);
+        
+        
         //DT chemin limite :
 	p4.boycottOrigin("France");  //aucun passage dans le while
 	assertTrue(p4.estVide());
@@ -384,7 +436,7 @@ public class PanierTest {
     @Test
     public void testToString() throws PanierPleinException {
         System.out.println("toString");
-        
+ 
         //test panier vide
         String expResultvide = "[]";
         String resultvide = p2.toString();
@@ -468,7 +520,7 @@ public class PanierTest {
     @Test
     public void testNbFruits() throws PanierPleinException{
         System.out.println("nbFruits");
-        
+
         p4.add(o1);
         p4.add(b1);
         p4.add(o2);
@@ -480,5 +532,7 @@ public class PanierTest {
         assertTrue(expOranges==resultOranges);
         assertTrue(expBananes==resultBananes);
     }
+    
+    
     
 }

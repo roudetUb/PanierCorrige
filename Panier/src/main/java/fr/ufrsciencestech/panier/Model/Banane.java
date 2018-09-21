@@ -9,39 +9,27 @@ package fr.ufrsciencestech.panier.Model;
  *
  * @author celine
  */
-public class Banane implements Fruit{
-    private String country;
-    private final double price = 0.50;
+public class Banane extends FruitSimple{
     
     public Banane() 
     {
         this.country="France";
+        this.price = 0.50;
     }
     
-    public Banane(String country) 
+    public Banane(double price, String country) 
     {
-        this.country=country;
-    }
-    
-    public double getPrice(){
-	return price;
-    }
-    public String getCountry(){
-	return country;
+        if(country.equals("")){
+            this.price=price;
+            this.country="France";  //France par défaut
+        }  
+	else
+            initAttributes(price, country);
     }
 
     @Override
     public String toString(){
         return "Banane";
-    }
-    
-    @Override
-    public boolean equals(Object o){
-        if(o != null && o instanceof Banane){
-            Banane or = (Banane) o;
-            return (country.equals(or.country));
-        }
-        return false;
     }
 
     public boolean isSeedless() {

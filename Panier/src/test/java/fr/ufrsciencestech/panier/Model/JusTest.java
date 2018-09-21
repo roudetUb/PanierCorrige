@@ -8,6 +8,10 @@ package fr.ufrsciencestech.panier.Model;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  *
@@ -84,6 +88,16 @@ public class JusTest {
     public void testGetPrice() {
         System.out.println("getPrice");
         
+        //Mock :
+        Fruit mockb = mock(Fruit.class);
+        when(mockb.getPrice()).thenReturn(0.5);   //comportement des doublures (stubbing)
+        Jus jb = new Jus(mockb);
+        double jprice = jb.getPrice();
+
+        //tests d’interaction :
+        verify(mockb, times(1)).getPrice();    //getPrice() doit avoir été appelé exactement 1 fois
+        assertTrue(jprice == (mockb.getPrice()+0.5));
+        
         //jus de banane
         double expResult0 = 0.50 + 0.5;
         double result0 = jb1.getPrice();
@@ -122,5 +136,4 @@ public class JusTest {
         String result2 = jmi.getCountry();
         assertEquals(expResult2, result2);
     }
-    
 }

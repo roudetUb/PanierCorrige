@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  *
@@ -68,6 +72,28 @@ public class MacedoineTest {
     @Test
     public void testIsSeedless() {
         System.out.println("isSeedless");
+        //mock
+        Fruit mockb = mock(Fruit.class);
+        Fruit mockc = mock(Fruit.class);
+        Fruit mocko = mock(Fruit.class);
+        when(mockb.isSeedless()).thenReturn(true);   //comportement des doublures (stubbing)
+        when(mockc.isSeedless()).thenReturn(false); 
+        when(mocko.isSeedless()).thenReturn(false); 
+        Macedoine mb = new Macedoine(mockb);
+        Macedoine mcomp2 = new Macedoine(mockb);
+        mcomp2.add(mockc);
+        Macedoine mcomp3 = new Macedoine(mockb);
+        mcomp3.add(mockc);
+        mcomp3.add(mocko);
+
+        //tests d’interaction :
+        verify(mockb, times(3)).isSeedless();    //isSeedless() doit avoir été appelé exactement 3 fois
+        verify(mockc, times(2)).isSeedless();    //Attention à l'operateur && !!!
+        verify(mocko, times(0)).isSeedless(); 
+        assertTrue(mb.isSeedless());
+        assertFalse(mcomp2.isSeedless());
+        assertFalse(mcomp3.isSeedless());
+        
         
         //test avec une macedoine ss pepins
         boolean expResult = true;
@@ -105,6 +131,15 @@ public class MacedoineTest {
     @Test
     public void testGetPrice() {
         System.out.println("getPrice");
+         //Mock :
+        Fruit mockb = mock(Fruit.class);
+        when(mockb.getPrice()).thenReturn(0.5);   //comportement des doublures (stubbing)
+        Macedoine mb = new Macedoine(mockb);
+        double mprice = mb.getPrice();
+
+        //tests d’interaction :
+        verify(mockb, times(1)).getPrice();    //getPrice() doit avoir été appelé exactement 1 fois
+        assertTrue(mprice == (mockb.getPrice()+1.0));
         
         //macedoine a 1 fruit
         Macedoine instance = new Macedoine(b1);

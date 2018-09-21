@@ -13,4 +13,8 @@ public interface Fruit {
     public boolean isSeedless();
     public double getPrice();
     public String getCountry();
+    @Override
+    public boolean equals(Object o);
+    @Override
+    public String toString();
 }

@@ -11,71 +11,73 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 /**
  *
  * @author celine
  */
-public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer {
-    private JButton inc;
-    private JButton dec;
-    private JLabel affiche;
+public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observer{
+    private Button inc;
+    private Button dec;
+    private Label affiche;
     /**
      * @return the inc
      */
-    public JButton getInc() {
+    public Button getInc() {
         return inc;
     }
-
     /**
      * @param inc the inc to set
      */
-    public void setInc(JButton inc) {
+    public void setInc(Button inc) {
         this.inc = inc;
     }
 
     /**
      * @return the dec
      */
-    public JButton getDec() {
+    public Button getDec() {
         return dec;
     }
-
     /**
      * @param dec the dec to set
      */
-    public void setDec(JButton dec) {
+    public void setDec(Button dec) {
         this.dec = dec;
     }
 
     /**
      * @return the affiche
      */
-    public JLabel getAffiche() {
+    public Label getAffiche() {
         return affiche;
     }
-
     /**
      * @param affiche the affiche to set
      */
-    public void setAffiche(JLabel affiche) {
+    public void setAffiche(Label affiche) {
         this.affiche = affiche;
     }
 
-    
-    public VueGraphiqueSimple(){
+    public VueGraphiqueSimpleAWT(){
         super("Panier");
-        inc = new JButton("+");
-        dec = new JButton("-");
-        affiche = new JLabel("0", JLabel.CENTER);
-        
+        inc = new Button("+");
+        dec = new Button("-");
+        affiche = new Label("0", Label.CENTER);
         add(inc, BorderLayout.NORTH);
         add(dec, BorderLayout.SOUTH);
         add(affiche, BorderLayout.CENTER);
         
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e)
+            {
+                System.exit(0);
+            }
+        });
         this.pack();
         this.setVisible(true);
         
@@ -96,10 +98,9 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
     }
     
     public int getValeur(ActionEvent e){
-        JButton b = (JButton) e.getSource();
+        Button b = (Button) e.getSource();
         //if(b != getInc() && b != getDec()) //pas d'autre bouton ici
         //    return 0;  //autre evenement que l'appui sur l'un des 2 boutons
         return (b==getInc()) ? 1 : -1;
     }
-    
 }

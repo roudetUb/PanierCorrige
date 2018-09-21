@@ -1,46 +1,50 @@
+package fr.ufrsciencestech.panier.View;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.ufrsciencestech.panier.View;
 
-import fr.ufrsciencestech.panier.Controler.ControleurSimple;
-import fr.ufrsciencestech.panier.Controler.Controleur;
-import fr.ufrsciencestech.panier.Controler.ControleurListe;
-import fr.ufrsciencestech.panier.Model.Ananas;
-import fr.ufrsciencestech.panier.Model.Banane;
-import fr.ufrsciencestech.panier.Model.Panier;
-import fr.ufrsciencestech.panier.Model.Fruit;
-import fr.ufrsciencestech.panier.Model.Orange;
-import fr.ufrsciencestech.panier.Model.Cerise;
-import fr.ufrsciencestech.panier.Model.Fraise;
-import fr.ufrsciencestech.panier.Model.Jus;
-import fr.ufrsciencestech.panier.Model.Macedoine;
+
+import fr.ufrsciencestech.panier.Model.*;
+import fr.ufrsciencestech.panier.Controler.*;
 import javax.swing.JFrame;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
  * @author celine
  */
 public class TestMVC {
-    public TestMVC(){
+    private VueGraphique vueg;
+    
+    public static void main(String[] args){
         
         //test avec controleur et vue simples
         Panier p = new Panier(4);
         VueConsole vuec = new VueConsole();
         p.addObserver(vuec);
         
-        VueGraphiqueSimple vueg = new VueGraphiqueSimple();
-        Controleur cs = new ControleurSimple();
+        //SpringIoC
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+	    
+        //VueGraphiqueSimple vueg = new VueGraphiqueSimple();
+        //VueGraphiqueSimpleAWT vueg = new VueGraphiqueSimpleAWT();
+        TestMVC test = (TestMVC)context.getBean("MVC");
+        
+        //Controleur cs = new ControleurSimple();
+        Controleur cs = (Controleur)context.getBean("Controleur");
         cs.setPanier(p);
-        cs.setVue(vueg);
-        p.addObserver(vueg);
-        vueg.addControleur(cs);
+        cs.setVue(test.vueg);
+        p.addObserver(test.vueg);
+        test.vueg.addControleur(cs);
         //afficher la vue courante
-        vueg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vueg.pack();
-        vueg.setVisible(true);
+        //vueg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //test.vueg.pack();
+        //test.vueg.setVisible(true);
         
         
         //test avec controleur et vue listes
@@ -78,11 +82,22 @@ public class TestMVC {
         //afficher la vue courante
         vuel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vuel.pack();
-        vuel.setVisible(true);
+        //vuel.setVisible(true);
+    }
+
+    /**
+     * @return the vueg
+     */
+    public VueGraphique getVueg() {
+        return vueg;
+    }
+
+    /**
+     * @param vueg the vueg to set
+     */
+    public void setVueg(VueGraphique vueg) {
+        this.vueg = vueg;
     }
     
-    public static void main(String[] args){
-        new TestMVC();
-    }
     
 }

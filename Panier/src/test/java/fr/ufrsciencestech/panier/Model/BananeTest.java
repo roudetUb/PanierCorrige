@@ -13,37 +13,24 @@ import static org.junit.Assert.*;
  *
  * @author celine
  */
-public class BananeTest {
-    Banane b1, b2, b3;
+public class BananeTest extends FruitSimpleTest {
+    // implementation of the abstract factory methods
+    FruitSimple createFruit(double price, String country) {
+        return new Banane(price, country);
+    }
+    
+    FruitSimple createFruitNull(){
+        return null;
+    }
     
     @Before
-    public void setUp() throws Exception {
-        b1 = new Banane("France");
-	b2 = new Banane("Colombie");
-	b3 = new Banane("Cote Ivoire");
+    public void setUp(){
     }
-
-    /**
-     * Test of getPrice method, of class Banane.
-     */
+    
     @Test
-    public void testGetPrice() {
-        System.out.println("getPrice");
-        
-        Banane instance = new Banane();
-        double expResult = 0.50;
-        double result = instance.getPrice();
-        assertEquals(expResult, result, 0.0);
-    }
-
-    /**
-     * Test of getCountry method, of class Banane.
-     */
-    @Test
-    public void testGetCountry() {
-        System.out.println("getCountry");
-        
-        Banane instance = new Banane();
+    public void testChaineVide() {
+        System.out.println("chaine vide");
+        Banane instance = new Banane(0.5,"");
         String expResult = "France";
         String result = instance.getCountry();
         assertEquals(expResult, result);
@@ -55,29 +42,10 @@ public class BananeTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        
         Banane instance = new Banane();
         String expResult = "Banane";
         String result = instance.toString();
         assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of equals method, of class Banane.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        
-        //test avec une banane null
-        Banane bnull = null;
-        assertFalse(b1.equals(bnull));
-        
-        //test de 2 bananes equivalentes
-        assertTrue(b1.equals(new Banane()));
-        
-        //test de 2 bananes non equivalentes : origine differente
-        assertFalse(b1.equals(new Banane("Cameroun")));
     }
 
     /**
@@ -86,7 +54,6 @@ public class BananeTest {
     @Test
     public void testIsSeedless() {
         System.out.println("isSeedless");
-       
         Fruit instancesspepins = new Banane();
         boolean expResult2 = true;
         boolean result2 = instancesspepins.isSeedless();

@@ -35,11 +35,9 @@ public class VueConsole implements Observer{
         System.out.println("Contenance initiale : " + 0);
     }
     
-    
-    
     public void update(Observable o, Object arg) {
-        Panier p = (Panier) arg;
-        Integer nb = (Integer) p.getFruits().size();
+        Panier p = (Panier) o;
+        Integer nb = (Integer) p.getSize();
         setTrace("Nouvelle contenance : " + nb.toString());
         System.out.println("Nouvelle contenance : " + nb.toString());
     }

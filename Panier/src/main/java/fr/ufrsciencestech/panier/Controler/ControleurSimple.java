@@ -34,8 +34,15 @@ public class ControleurSimple implements Controleur{
         }
             
     }
+    public Panier getPanier(){
+        return this.p;
+    }
     public void setPanier(Panier p){
         this.p = p;
+    }
+    
+    public VueGraphique getVue(){
+        return this.vg;
     }
     public void setVue(VueGraphique vg){
         this.vg = vg;

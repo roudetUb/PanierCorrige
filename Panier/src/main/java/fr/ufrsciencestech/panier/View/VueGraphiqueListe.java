@@ -75,11 +75,23 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
 
         add(dec, BorderLayout.SOUTH);
         add(affichenb, BorderLayout.CENTER);
+        
+        this.setVisible(true);
+        ///this.pack();
+        
+        /* Use setName() so AssertJ Swing can find these components easily */
+        inc.setName("Plus");
+        dec.setName("Minus");
+        affichenb.setName("Affichage");
+        listeAdd.setName("Fruit");
     }
 
     public void update(Observable m, Object o) {
-        Panier p = (Panier) o;
-        getAffiche().setText("Panier de " + ((Integer)p.getFruits().size()).toString() + " fruits : " + p.getPrice() + " euros\n");
+        Panier p = (Panier) m;
+        if(p.estVide())
+            getAffiche().setText("Panier de 0 fruits\n");
+        else
+            getAffiche().setText("Panier de " + ((Integer)p.getFruits().size()).toString() + " fruits : " + p.getPrice() + " euros\n");
         for(int i = 0 ; i < listeAdd.getItemCount() ; i++)
         {
             Fruit f = (Fruit) listeAdd.getItemAt(i);
@@ -98,8 +110,5 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
         if(b != getInc() && b != getDec()) 
             return 0;  //autre evenement que l'appui sur l'un des 2 boutons
         return (b==getInc()) ? 1 : -1;
-    }
-
-   
-    
+    } 
 }

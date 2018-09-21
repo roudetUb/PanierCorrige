@@ -9,54 +9,35 @@ package fr.ufrsciencestech.panier.Model;
  *
  * @author roudet
  */
-public class Orange implements Fruit{
-    private double price;
-    private String country;
+public class Orange extends FruitSimple{
 	
     public Orange() //throws Exception
     {
-        this.price=0.5;
-        this.country="France";
+        this.price = 0.5;
+        this.country="Espagne";
     }
     
     public Orange(double price, String country) //throws Exception
     {
-	if(price < 0){
-            this.price = -price;  //ou = 0
-            this.country=country;
-            //ou throw new Exception();
-            //ou gestion avec JML
-	}
-        else if(country.equals("")){
+	if(country.equals("")){
             this.price=price;
-            this.country="France";  //France par défaut
+            this.country="Espagne";  //Espagne par défaut
         }  
 	else
-        {
-            this.price=price;
-            this.country=country;
-        }
+            initAttributes(price, country);
     }
-    
-    public double getPrice(){
-	return price;
+
+    public void setPrice(double price){
+	this.price=price;
     }
-    public String getCountry(){
-	return country;
+ 
+    public void setCountry(String country){
+	this.country=country;
     }
 
     @Override
     public String toString(){
         return "Orange";
-    }
-    
-    @Override
-    public boolean equals(Object o){
-        if(o != null && o instanceof Orange){
-            Orange or = (Orange) o;
-            return (price == or.price && country.equals(or.country));
-        }
-        return false;
     }
 
     public boolean isSeedless() {

@@ -13,52 +13,31 @@ import static org.junit.Assert.*;
  *
  * @author celine
  */
-public class AnanasTest {
-    Ananas a1, a2, a3;
+public class AnanasTest extends FruitSimpleTest {
+    
+    // implementation of the abstract factory methods
+    FruitSimple createFruit(double price, String country) {
+        return new Ananas(price, country);
+    }
+    
+    FruitSimple createFruitNull(){
+        return null;
+    }
     
     @Before
-    public void setUp() throws Exception {
-        a1 = new Ananas(2.0, "Bresil");
-	a2 = new Ananas(2.5, "Cameroun");
-	a3 = new Ananas(3.0, "Uruguay");
+    public void setUp() {
     }
-
+    
     /**
-     * Test of getPrice method, of class Ananas.
+     * Test of constructeur, of class Ananas.
      */
     @Test
-    public void testGetPrice() {
-        System.out.println("getPrice");
-        
-        Ananas instance = new Ananas();
-        double expResult = 2.0;
-        double result = instance.getPrice();
-        assertEquals(expResult, result, 0.0);
-        
-        //prix négatif
-        Ananas instance2 = new Ananas(-2.0, "Bresil");
-        double expResult2 = 2.0;
-        double result2 = instance2.getPrice();
-        assertTrue(expResult2 == result2);
-    }
-
-    /**
-     * Test of getCountry method, of class Ananas.
-     */
-    @Test
-    public void testGetCountry() {
-        System.out.println("getCountry");
-        
-        Ananas instance = new Ananas();
+    public void testChaineVide() {
+        System.out.println("chaine vide");
+        Ananas instance = new Ananas(2.0,"");
         String expResult = "Bresil";
         String result = instance.getCountry();
         assertEquals(expResult, result);
-        
-        //String vide
-        Ananas instance2 = new Ananas(0.3, "");
-        String expResult2 = "Bresil";
-        String result2 = instance2.getCountry();
-        assertEquals(expResult2, result2);
     }
 
     /**
@@ -67,35 +46,10 @@ public class AnanasTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        
         Ananas instance = new Ananas();
         String expResult = "Ananas";
         String result = instance.toString();
         assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of equals method, of class Ananas.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        
-        //test avec un Ananas null
-        Ananas onull = null;
-        assertFalse(a1.equals(onull));
-        
-        //test de 2 Ananas equivalents
-        assertTrue(a1.equals(new Ananas()));
-        
-        //test de 2 Ananas non equivalents : prix different
-        assertFalse(a1.equals(new Ananas(1.0, "Bresil")));
-        
-        //test de 2 Ananas non equivalents : origine differente
-        assertFalse(a1.equals(new Ananas(2.0, "Uruguay")));
-        
-        //les 2
-        assertFalse(a1.equals(a2));
     }
 
     /**
@@ -104,7 +58,6 @@ public class AnanasTest {
     @Test
     public void testIsSeedless() {
         System.out.println("isSeedless");
-        
         Ananas instance = new Ananas();
         boolean expResult = true;
         boolean result = instance.isSeedless();

@@ -5,19 +5,25 @@
  */
 package fr.ufrsciencestech.panier.View;
 
+import fr.ufrsciencestech.panier.Model.Fruit;
+import fr.ufrsciencestech.panier.Model.Jus;
 import fr.ufrsciencestech.panier.Model.PanierVideException;
 import fr.ufrsciencestech.panier.Model.PanierPleinException;
 import fr.ufrsciencestech.panier.Model.Panier;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  *
  * @author celine
  */
 public class VueConsoleTest {
-    VueConsole vuec;
+    VueConsole vuec, vuecmock;
     Panier p;
     
     public VueConsoleTest() {
@@ -25,6 +31,7 @@ public class VueConsoleTest {
     
     @Before
     public void setUp() {
+        vuecmock = new VueConsole();
         vuec = new VueConsole();
         p = new Panier(2);
     }
@@ -37,7 +44,23 @@ public class VueConsoleTest {
     @Test
     public void testUpdate() throws PanierPleinException, PanierVideException {
         System.out.println("update");
- 
+        //mock
+        Panier mockp2 = mock(Panier.class);
+        Panier mockp0 = mock(Panier.class);
+        when(mockp2.getSize()).thenReturn(2);   //comportement des doublures (stubbing)
+        when(mockp0.getSize()).thenReturn(0); 
+        //tests d’interaction :
+        verify(mockp2, times(0)).getSize();    //getSize() doit avoir été appelé exactement 0 fois
+        assertEquals(vuecmock.getTrace(), "Contenance initiale : " + 0);
+        vuecmock.update(mockp2, null);
+        verify(mockp2, times(1)).getSize(); 
+        assertEquals(vuecmock.getTrace(), "Nouvelle contenance : " + 2);
+        
+        vuecmock.update(mockp0, null);
+        verify(mockp0, times(1)).getSize(); 
+        assertEquals(vuecmock.getTrace(), "Nouvelle contenance : " + 0);
+
+        //sans les mocks
         assertEquals(vuec.getTrace(), "Contenance initiale : " + 0);
         p.add();
         assertEquals(vuec.getTrace(), "Contenance initiale : " + 0);
