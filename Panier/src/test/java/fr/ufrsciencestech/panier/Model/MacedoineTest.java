@@ -26,7 +26,6 @@ public class MacedoineTest {
     Fraise f1;
     Jus jo;
 
-    
     @Before
     public void setUp() {
         b1 = new Banane();
@@ -131,7 +130,7 @@ public class MacedoineTest {
     @Test
     public void testGetPrice() {
         System.out.println("getPrice");
-         //Mock :
+        //Mock :
         Fruit mockb = mock(Fruit.class);
         when(mockb.getPrice()).thenReturn(0.5);   //comportement des doublures (stubbing)
         Macedoine mb = new Macedoine(mockb);

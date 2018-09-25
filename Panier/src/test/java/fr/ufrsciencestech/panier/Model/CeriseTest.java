@@ -16,15 +16,21 @@ import static org.junit.Assert.*;
 public class CeriseTest extends FruitSimpleTest{
     
     // implementation of the abstract factory methods
+    @Override
     FruitSimple createFruit(double price, String country) {
         return new Cerise(price, country);
     }
     
+    @Override
     FruitSimple createFruitNull(){
         return null;
     }
     
+    /**
+     *
+     */
     @Before
+    @Override
     public void setUp() {
     }
     

@@ -16,15 +16,21 @@ import org.junit.Test;
  */
 public class OrangeTest extends FruitSimpleTest{
     // implementation of the abstract factory methods
+    @Override
     FruitSimple createFruit(double price, String country) {
         return new Orange(price, country);
     }
     
+    @Override
     FruitSimple createFruitNull(){
         return null;
     }
     
+    /**
+     *
+     */
     @Before
+    @Override
     public void setUp(){
     }
     
