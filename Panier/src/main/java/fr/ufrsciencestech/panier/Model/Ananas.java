@@ -32,6 +32,7 @@ public class Ananas extends FruitSimple{
         return "Ananas";
     }
 
+    @Override
     public boolean isSeedless() {
         return true;
     }

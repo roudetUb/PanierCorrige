@@ -33,9 +33,9 @@ public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observ
     /**
      * @param inc the inc to set
      */
-    public void setInc(Button inc) {
+    /*public void setInc(Button inc) {
         this.inc = inc;
-    }
+    }*/
 
     /**
      * @return the dec
@@ -46,9 +46,9 @@ public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observ
     /**
      * @param dec the dec to set
      */
-    public void setDec(Button dec) {
+    /*public void setDec(Button dec) {
         this.dec = dec;
-    }
+    }*/
 
     /**
      * @return the affiche
@@ -99,11 +99,11 @@ public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observ
         getDec().addActionListener(c);
     }
     
-    @Override
+    /*@Override
     public int getValeur(ActionEvent e){
         Button b = (Button) e.getSource();
         //if(b != getInc() && b != getDec()) //pas d'autre bouton ici
         //    return 0;  //autre evenement que l'appui sur l'un des 2 boutons
         return (b==getInc()) ? 1 : -1;
-    }
+    }*/
 }

@@ -10,7 +10,6 @@ import fr.ufrsciencestech.panier.Model.Fruit;
 import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
@@ -32,15 +31,15 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
     public JButton getInc() {
         return inc;
     }
-    public void setInc(JButton inc) {
+    /*public void setInc(JButton inc) {
         this.inc = inc;
-    }
+    }*/
     public JButton getDec() {
         return dec;
     }
-    public void setDec(JButton dec) {
+    /*public void setDec(JButton dec) {
         this.dec = dec;
-    }
+    }*/
     public JTextArea getAffiche() {
         return affichenb;
     }
@@ -51,9 +50,9 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
     public JComboBox<Fruit> getListeAdd() {
         return listeAdd;
     }
-    public void setListeAdd(JComboBox<Fruit> listeAdd) {
+    /*public void setListeAdd(JComboBox<Fruit> listeAdd) {
         this.listeAdd = listeAdd;
-    }
+    }*/
     
     public void addListeAdd(Fruit f){
         listeAdd.addItem(f);
@@ -107,11 +106,11 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
         getDec().addActionListener(c);
     }
     
-    @Override
+   /*@Override
    public int getValeur(ActionEvent e){
         JButton b = (JButton) e.getSource();
         if(b != getInc() && b != getDec()) 
             return 0;  //autre evenement que l'appui sur l'un des 2 boutons
         return (b==getInc()) ? 1 : -1;
-    } 
+    } */
 }

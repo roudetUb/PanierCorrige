@@ -14,5 +14,5 @@ import java.awt.event.ActionListener;
  */
 public interface Controleur extends ActionListener{
     public void setPanier(Panier p);
-    public void setVue(VueGraphique vg);
+    //public void setVue(VueGraphique vg);
 }

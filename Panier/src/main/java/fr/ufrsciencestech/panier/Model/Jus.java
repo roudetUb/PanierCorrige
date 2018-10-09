@@ -35,6 +35,7 @@ public class Jus implements Fruit {
      * Un Jus de fruit ne contient jamais de pepins.
      * @return 
      */
+    @Override
     public boolean isSeedless() {
 	return true;
     }
@@ -44,6 +45,7 @@ public class Jus implements Fruit {
 	return getF().toString() + "(Jus)";
     }
 
+    @Override
     public double getPrice() {
         //somme des fruits qui composent le jus + 0.5 euro pour la preparation
         double total = 0.5;
@@ -51,6 +53,7 @@ public class Jus implements Fruit {
         return total;
     }
 
+    @Override
     public String getCountry() {
         return "";  //on ne s'y interesse pas
     }

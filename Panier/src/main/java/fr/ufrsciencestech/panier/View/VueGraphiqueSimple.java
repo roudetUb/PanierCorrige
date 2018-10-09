@@ -8,7 +8,6 @@ package fr.ufrsciencestech.panier.View;
 import fr.ufrsciencestech.panier.Controler.Controleur;
 import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
@@ -31,24 +30,10 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
     }
 
     /**
-     * @param inc the inc to set
-     */
-    public void setInc(JButton inc) {
-        this.inc = inc;
-    }
-
-    /**
      * @return the dec
      */
     public JButton getDec() {
         return dec;
-    }
-
-    /**
-     * @param dec the dec to set
-     */
-    public void setDec(JButton dec) {
-        this.dec = dec;
     }
 
     /**
@@ -65,7 +50,6 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
         this.affiche = affiche;
     }
 
-    
     public VueGraphiqueSimple(){
         super("Panier");
         inc = new JButton("+");
@@ -79,7 +63,6 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
         this.pack();
         this.setVisible(true);
         
-        /* Use setName() so AssertJ Swing can find these components easily */
         inc.setName("Plus");
         dec.setName("Minus");
         affiche.setName("Affichage");
@@ -97,12 +80,12 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
         getDec().addActionListener(c);
     }
     
-    @Override
+    /*@Override
     public int getValeur(ActionEvent e){
         JButton b = (JButton) e.getSource();
         //if(b != getInc() && b != getDec()) //pas d'autre bouton ici
         //    return 0;  //autre evenement que l'appui sur l'un des 2 boutons
         return (b==getInc()) ? 1 : -1;
-    }
+    }*/
     
 }

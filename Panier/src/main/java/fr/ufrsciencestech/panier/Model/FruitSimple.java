@@ -13,9 +13,11 @@ public abstract class FruitSimple implements Fruit {
     protected double price;
     protected String country;
     
+    @Override
     public double getPrice(){
 	return price;
     }
+    @Override
     public String getCountry(){
 	return country;
     }
@@ -43,6 +45,7 @@ public abstract class FruitSimple implements Fruit {
         return false;
     }
 
+    @Override
     public abstract boolean isSeedless();
     @Override
     public abstract String toString();
