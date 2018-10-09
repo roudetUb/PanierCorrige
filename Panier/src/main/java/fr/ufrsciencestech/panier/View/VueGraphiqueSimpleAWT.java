@@ -30,26 +30,14 @@ public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observ
     public Button getInc() {
         return inc;
     }
-    /**
-     * @param inc the inc to set
-     */
-    /*public void setInc(Button inc) {
-        this.inc = inc;
-    }*/
-
+    
     /**
      * @return the dec
      */
     public Button getDec() {
         return dec;
     }
-    /**
-     * @param dec the dec to set
-     */
-    /*public void setDec(Button dec) {
-        this.dec = dec;
-    }*/
-
+    
     /**
      * @return the affiche
      */

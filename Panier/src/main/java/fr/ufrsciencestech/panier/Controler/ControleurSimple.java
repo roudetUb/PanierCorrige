@@ -8,7 +8,6 @@ package fr.ufrsciencestech.panier.Controler;
 import fr.ufrsciencestech.panier.Model.Panier;
 import fr.ufrsciencestech.panier.Model.PanierPleinException;
 import fr.ufrsciencestech.panier.Model.PanierVideException;
-import fr.ufrsciencestech.panier.View.VueGraphique;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 
@@ -18,7 +17,6 @@ import java.awt.event.ActionEvent;
  */
 public class ControleurSimple implements Controleur{
     private Panier p;
-    //private VueGraphique vg;
     
     @Override
     public void actionPerformed(ActionEvent e){
@@ -36,20 +34,10 @@ public class ControleurSimple implements Controleur{
         }
             
     }
-    /*public Panier getPanier(){
-        return this.p;
-    }*/
+
     @Override
     public void setPanier(Panier p){
         this.p = p;
     }
-    
-    /*public VueGraphique getVue(){
-        return this.vg;
-    }
 
-    @Override
-    public void setVue(VueGraphique vg){
-        this.vg = vg;
-    }*/
 }

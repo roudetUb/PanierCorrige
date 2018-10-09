@@ -17,6 +17,7 @@ import org.junit.Ignore;
  *
  * @author celine
  */
+//plus besoin de cette classe de tests
 public class ControleurTest {
     ControleurSimple c1;
     Controleur c2;
