@@ -46,6 +46,14 @@ public class ControleurSimple implements Controleur{
     public VueGraphique getVue(){
         return this.vg;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     *
+     * @param vg
+     */
+>>>>>>> b02cb02d71c099229a71fe3427c91de814465717
     @Override
     public void setVue(VueGraphique vg){
         this.vg = vg;

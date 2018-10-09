@@ -21,6 +21,7 @@ public class ControleurListe implements Controleur{
     private Panier p;
     private VueGraphiqueListe vg;
     
+    @Override
     public void actionPerformed(ActionEvent e){
         if(vg.getValeur(e) == 1)
             try {
@@ -36,10 +37,16 @@ public class ControleurListe implements Controleur{
         }
     }
     
+    @Override
     public void setPanier(Panier p){
         this.p = p;
     }
     
+    /**
+     *
+     * @param vg
+     */
+    @Override
     public void setVue(VueGraphique vg){
         this.vg = (VueGraphiqueListe) vg;
     }

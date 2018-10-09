@@ -87,16 +87,19 @@ public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observ
         affiche.setName("Affichage");
     }
 
+    @Override
     public void update(Observable m, Object o) {
         Panier p = (Panier) m;
         getAffiche().setText(((Integer)p.getFruits().size()).toString());
     }
 
+    @Override
     public void addControleur(Controleur c) {
         getInc().addActionListener(c);
         getDec().addActionListener(c);
     }
     
+    @Override
     public int getValeur(ActionEvent e){
         Button b = (Button) e.getSource();
         //if(b != getInc() && b != getDec()) //pas d'autre bouton ici

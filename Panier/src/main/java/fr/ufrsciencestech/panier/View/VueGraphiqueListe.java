@@ -86,6 +86,7 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
         listeAdd.setName("Fruit");
     }
 
+    @Override
     public void update(Observable m, Object o) {
         Panier p = (Panier) m;
         if(p.estVide())
@@ -100,11 +101,13 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
         }
     }
 
+    @Override
     public void addControleur(Controleur c) {
         getInc().addActionListener(c);
         getDec().addActionListener(c);
     }
     
+    @Override
    public int getValeur(ActionEvent e){
         JButton b = (JButton) e.getSource();
         if(b != getInc() && b != getDec()) 
