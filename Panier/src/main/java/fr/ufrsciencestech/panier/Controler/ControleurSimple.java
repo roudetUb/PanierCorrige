@@ -19,6 +19,7 @@ public class ControleurSimple implements Controleur{
     private Panier p;
     private VueGraphique vg;
     
+    @Override
     public void actionPerformed(ActionEvent e){
         if(vg.getValeur(e) == 1)
             try {
@@ -37,6 +38,7 @@ public class ControleurSimple implements Controleur{
     public Panier getPanier(){
         return this.p;
     }
+    @Override
     public void setPanier(Panier p){
         this.p = p;
     }
@@ -44,6 +46,7 @@ public class ControleurSimple implements Controleur{
     public VueGraphique getVue(){
         return this.vg;
     }
+    @Override
     public void setVue(VueGraphique vg){
         this.vg = vg;
     }
