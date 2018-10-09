@@ -47,7 +47,6 @@ public class ControleurSimple implements Controleur{
         return this.vg;
     }
 
-
     /**
      *
      * @param vg
