@@ -8,7 +8,6 @@ package fr.ufrsciencestech.panier.View;
 import fr.ufrsciencestech.panier.Controler.ControleurSimple;
 import fr.ufrsciencestech.panier.Model.Panier;
 import fr.ufrsciencestech.panier.Model.PanierPleinException;
-import fr.ufrsciencestech.panier.Model.PanierVideException;
 import java.awt.Button;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
