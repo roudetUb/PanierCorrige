@@ -55,6 +55,9 @@ public class VueGraphiqueListeTest {
         assertEquals(vueg.getAffiche().getText(debut1l, fin1l), "Panier de 1 fruits : 0.5 euros\n");
         p.add();
         assertEquals(vueg.getAffiche().getText(debut1l, fin1l), "Panier de 2 fruits : 1.0 euros\n");
+        
+        vueg.setAffiche(new JTextArea("Panier de 0 fruits\n"));
+        assertEquals(vueg.getAffiche().getText(), "Panier de 0 fruits\n");
     }
 
     /**
@@ -83,6 +86,32 @@ public class VueGraphiqueListeTest {
         assertEquals(res.getText(debut1l, fin1l), "Panier de 2 fruits : 1.0 euros\n");
     }
     
+    @Test
+    public void testAddPlein() throws BadLocationException {
+        System.out.println("addplein");
+        assertNotNull(vueg);  // Instantiated?
+        JTextArea res = (JTextArea)TestUtils.getChildNamed(vueg, "Affichage");
+        assertNotNull(res); // Component found?
+        final JButton plus = (JButton)TestUtils.getChildNamed(vueg, "Plus");
+        assertNotNull(plus);
+
+        int debut1l = res.getLineStartOffset(0);
+        int fin1l = res.getLineEndOffset(0);
+        assertEquals(res.getText(debut1l, fin1l), "Panier de 0 fruits\n");
+
+        plus.doClick();
+        fin1l = res.getLineEndOffset(0);
+        assertEquals(res.getText(debut1l, fin1l), "Panier de 1 fruits : 0.5 euros\n");
+        
+        plus.doClick();
+        fin1l = res.getLineEndOffset(0);
+        assertEquals(res.getText(debut1l, fin1l), "Panier de 2 fruits : 1.0 euros\n");
+        
+        plus.doClick();
+        fin1l = res.getLineEndOffset(0);
+        assertEquals(res.getText(debut1l, fin1l), "Panier de 2 fruits : 1.0 euros\n");
+    }
+    
     //https://www.javaworld.com/article/2073056/swing-gui-programming/automate-gui-tests-for-swing-applications.html
     @Test
     public void testRemoveOk() throws BadLocationException {
@@ -105,7 +134,7 @@ public class VueGraphiqueListeTest {
         assertEquals(res.getText(debut1l, fin1l), "Panier de 0 fruits\n");
     }
     
-    @Ignore
+    @Test
     public void testRemoveZero() throws BadLocationException {
         System.out.println("remove");
         assertNotNull(vueg);  // Instantiated?

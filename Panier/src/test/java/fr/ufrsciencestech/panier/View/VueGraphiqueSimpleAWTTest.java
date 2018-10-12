@@ -8,6 +8,7 @@ package fr.ufrsciencestech.panier.View;
 import fr.ufrsciencestech.panier.Controler.ControleurSimple;
 import fr.ufrsciencestech.panier.Model.Panier;
 import fr.ufrsciencestech.panier.Model.PanierPleinException;
+import fr.ufrsciencestech.panier.Model.PanierVideException;
 import java.awt.Button;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
@@ -30,7 +31,7 @@ public class VueGraphiqueSimpleAWTTest {
         p = new Panier(2);
         c1 = new ControleurSimple();
         c1.setPanier(p);
-        c1.setVue(vueg);
+        //c1.setVue(vueg);
         p.addObserver(vueg);
         vueg.addControleur(c1);
     }
@@ -45,6 +46,9 @@ public class VueGraphiqueSimpleAWTTest {
         assertEquals(vueg.getAffiche().getText(), "1");
         p.add();
         assertEquals(vueg.getAffiche().getText(), "2");
+        
+        vueg.setAffiche(new Label("0", Label.CENTER));
+        assertEquals(vueg.getAffiche().getText(), "0");
     }
 
     /**

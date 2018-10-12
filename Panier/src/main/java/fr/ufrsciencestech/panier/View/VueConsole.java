@@ -35,6 +35,7 @@ public class VueConsole implements Observer{
         System.out.println("Contenance initiale : " + 0);
     }
     
+    @Override
     public void update(Observable o, Object arg) {
         Panier p = (Panier) o;
         Integer nb = (Integer) p.getSize();

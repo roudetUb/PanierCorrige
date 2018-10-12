@@ -9,7 +9,6 @@ import fr.ufrsciencestech.panier.Model.PanierVideException;
 import fr.ufrsciencestech.panier.Model.PanierPleinException;
 import fr.ufrsciencestech.panier.Controler.ControleurSimple;
 import fr.ufrsciencestech.panier.Model.Panier;
-import java.awt.event.ActionEvent;
 //import java.util.concurrent.Callable;  //pour AssertJ Swing
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -29,7 +28,7 @@ public class VueGraphiqueSimpleTest {
     private ControleurSimple c1;
     //private Controleur c2;
     private Panier p;
-    private ActionEvent einc, edec;
+    //private ActionEvent einc, edec;
     //private FrameFixture window;  //pour AssertJ Swing
 
     @Before
@@ -44,7 +43,7 @@ public class VueGraphiqueSimpleTest {
         c1 = new ControleurSimple();
         //c2 = new ControleurSimple();
         c1.setPanier(p);
-        c1.setVue(vueg);
+        //c1.setVue(vueg);
         p.addObserver(vueg);
         vueg.addControleur(c1);
         //einc = new ActionEvent(vueg.getInc(), 0, "inc");
@@ -75,6 +74,9 @@ public class VueGraphiqueSimpleTest {
         assertEquals(vueg.getAffiche().getText(), "1");
         p.add();
         assertEquals(vueg.getAffiche().getText(), "2");
+        
+        vueg.setAffiche(new JLabel("0", JLabel.CENTER));
+        assertEquals(vueg.getAffiche().getText(), "0");
     }
 
     /**
@@ -90,6 +92,22 @@ public class VueGraphiqueSimpleTest {
         assertNotNull(plus);
         plus.doClick();
         assertEquals(res.getText(), "1");
+        plus.doClick();
+        assertEquals(res.getText(), "2");
+    }
+    
+    @Test
+    public void testAddPlein() {
+        System.out.println("addplein");
+        assertNotNull(vueg);  // Instantiated?
+        JLabel res = (JLabel)TestUtils.getChildNamed(vueg, "Affichage");
+        assertNotNull(res); // Component found?
+        final JButton plus = (JButton)TestUtils.getChildNamed(vueg, "Plus");
+        assertNotNull(plus);
+        plus.doClick();
+        assertEquals(res.getText(), "1");
+        plus.doClick();
+        assertEquals(res.getText(), "2");
         plus.doClick();
         assertEquals(res.getText(), "2");
     }
@@ -122,7 +140,7 @@ public class VueGraphiqueSimpleTest {
         minus.doClick();
         assertEquals(res.getText(), "0");
     }
-    
+
     @Ignore
     public void testAddAssertJ() {  //ne marche pas !
         System.out.println("add");
@@ -133,7 +151,7 @@ public class VueGraphiqueSimpleTest {
     /**
      * Test of getValeur method, of class VueGraphiqueSimple.
      */
-    @Ignore  //ignore pour fonctionner dans Jenkins
+    /*@Ignore  //ignore pour fonctionner dans Jenkins
     public void testGetValeur() {
         System.out.println("getValeur");
         //bouton +
@@ -151,6 +169,6 @@ public class VueGraphiqueSimpleTest {
         int expResult3 = 0;
         int result3 = vueg.getValeur(e);
         assertEquals(expResult3, result3);
-    }
+    }*/
     
 }

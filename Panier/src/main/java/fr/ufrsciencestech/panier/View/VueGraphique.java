@@ -18,5 +18,5 @@ public interface VueGraphique extends Vue,Observer {
     @Override
     public void update(Observable m, Object o);
     public void addControleur(Controleur c);
-    public int getValeur(ActionEvent e);
+    //public int getValeur(ActionEvent e);
 }

@@ -38,7 +38,7 @@ public class TestMVC {
         //Controleur cs = new ControleurSimple();
         Controleur cs = (Controleur)context.getBean("Controleur");
         cs.setPanier(p);
-        cs.setVue(test.vueg);
+        //cs.setVue(test.vueg);
         p.addObserver(test.vueg);
         test.vueg.addControleur(cs);
         //afficher la vue courante
@@ -74,7 +74,7 @@ public class TestMVC {
         Fruit jmi = (Fruit)new Jus(ile);
         vuel.addListeAdd(jmi);
         
-        Controleur cl = new ControleurListe();
+        ControleurListe cl = new ControleurListe();
         cl.setPanier(p);
         cl.setVue(vuel);
         p.addObserver(vuel);

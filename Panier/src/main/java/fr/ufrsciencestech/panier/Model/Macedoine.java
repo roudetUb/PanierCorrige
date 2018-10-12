@@ -28,6 +28,7 @@ public class Macedoine implements Fruit {
 	seedless = seedless && f.isSeedless();
     }
 
+    @Override
     public boolean isSeedless() {
 	return seedless;
 //	Autre solution :
@@ -59,6 +60,7 @@ public class Macedoine implements Fruit {
   	return stb.toString();
     }
 
+    @Override
     public double getPrice() {
         //somme des fruits qui la composent + 1.0 euro pour la preparation
         double total= 0.0;
@@ -71,6 +73,7 @@ public class Macedoine implements Fruit {
 	return total;
     }
 
+    @Override
     public String getCountry() {
         return "";  //on ne s'y interesse pas
     }

@@ -17,6 +17,7 @@ import org.junit.Ignore;
  *
  * @author celine
  */
+//plus besoin de cette classe de tests
 public class ControleurTest {
     ControleurSimple c1;
     Controleur c2;
@@ -37,7 +38,7 @@ public class ControleurTest {
         p4 = new Panier(4);
         vueg = new VueGraphiqueSimple(); 
         c1.setPanier(p);
-        c1.setVue(vueg);
+        //c1.setVue(vueg);
         
         edec = new ActionEvent(vueg.getDec(), 1, "dec");
         einc = new ActionEvent(vueg.getInc(), 0, "inc");
@@ -94,15 +95,6 @@ public class ControleurTest {
         c1.setPanier(p4);
         c1.actionPerformed(einc);
         assertTrue(p4.getSize() == 1);
-    }
-
-    /**
-     * Test of setVue method, of class Controleur.
-     */
-    @Ignore
-    public void testSetVue() {
-        System.out.println("setVue");
-        c1.setVue(vueg);
     }
     
 }

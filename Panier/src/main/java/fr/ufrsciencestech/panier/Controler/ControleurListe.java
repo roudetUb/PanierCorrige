@@ -11,6 +11,7 @@ import fr.ufrsciencestech.panier.Model.PanierPleinException;
 import fr.ufrsciencestech.panier.Model.PanierVideException;
 import fr.ufrsciencestech.panier.View.VueGraphique;
 import fr.ufrsciencestech.panier.View.VueGraphiqueListe;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 
 /**
@@ -23,7 +24,7 @@ public class ControleurListe implements Controleur{
     
     @Override
     public void actionPerformed(ActionEvent e){
-        if(vg.getValeur(e) == 1)
+        if(((Component)e.getSource()).getName().equals("Plus"))
             try {
                 p.add((Fruit)vg.getListeAdd().getSelectedItem());
         } catch (PanierPleinException ex) {
@@ -46,7 +47,6 @@ public class ControleurListe implements Controleur{
      *
      * @param vg
      */
-    @Override
     public void setVue(VueGraphique vg){
         this.vg = (VueGraphiqueListe) vg;
     }
