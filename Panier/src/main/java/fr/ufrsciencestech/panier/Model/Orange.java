@@ -9,7 +9,7 @@ package fr.ufrsciencestech.panier.Model;
  *
  * @author roudet
  */
-public class Orange extends FruitSimple{
+public class Orange extends FruitSimple {
 	
     public Orange() //throws Exception
     {
