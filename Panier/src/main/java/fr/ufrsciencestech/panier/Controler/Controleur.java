@@ -6,7 +6,6 @@
 package fr.ufrsciencestech.panier.Controler;
 
 import fr.ufrsciencestech.panier.Model.Panier;
-import fr.ufrsciencestech.panier.View.VueGraphique;
 import java.awt.event.ActionListener;
 /**
  *
