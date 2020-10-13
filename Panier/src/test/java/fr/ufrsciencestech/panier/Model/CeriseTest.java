@@ -43,7 +43,6 @@ public class CeriseTest extends FruitSimpleTest{
         assertEquals(expResult, result);
     }
 
-    
     /**
      * Test of toString method, of class Cerise.
      */
@@ -67,5 +66,4 @@ public class CeriseTest extends FruitSimpleTest{
         boolean result1 = instanceavecpepins.isSeedless();
         assertTrue(expResult1 == result1);
     }
-    
 }

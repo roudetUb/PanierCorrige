@@ -13,9 +13,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring.version>4.3.11.RELEASE</spring.version>
-    <maven.compiler.source>1.6</maven.compiler.source>
-    <maven.compiler.target>1.6</maven.compiler.target>
+    <!-- <spring.version>4.3.11.RELEASE</spring.version>  -->
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -26,11 +26,23 @@
       <scope>test</scope>
     </dependency>
     
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>2.0.5</version>
+   <!-- <dependency>
+	<groupId>log4j</groupId>
+	<artifactId>log4j</artifactId>
+	<version>1.2.17</version>
     </dependency>
+    
+    <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-core</artifactId>
+	<version>5.1.9.RELEASE</version>
+    </dependency>
+
+    <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-context</artifactId>
+	<version>5.1.9.RELEASE</version>
+    </dependency> -->
     
     <dependency>
             <groupId>org.mockito</groupId>
@@ -62,7 +74,19 @@
                     </execution>
                 </executions>
             </plugin>
-            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>fr.ufrsciencestech.panier.TestMVC</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
        </plugins>
    </build>
 </project>

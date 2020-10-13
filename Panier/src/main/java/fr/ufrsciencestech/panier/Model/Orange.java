@@ -11,13 +11,13 @@ package fr.ufrsciencestech.panier.Model;
  */
 public class Orange extends FruitSimple {
 	
-    public Orange() //throws Exception
+    public Orange() 
     {
         this.price = 0.5;
         this.country="Espagne";
     }
     
-    public Orange(double price, String country) //throws Exception
+    public Orange(double price, String country) 
     {
 	if(country.equals("")){
             this.price=price;
@@ -38,7 +38,7 @@ public class Orange extends FruitSimple {
     @Override
     public String toString(){
         return "Orange";
-    }
+    }     
 
     @Override
     public boolean isSeedless() {

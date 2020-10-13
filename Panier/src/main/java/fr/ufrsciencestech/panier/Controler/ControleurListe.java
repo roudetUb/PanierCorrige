@@ -18,8 +18,7 @@ import java.awt.event.ActionEvent;
  *
  * @author celine
  */
-public class ControleurListe implements Controleur{
-    private Panier p;
+public class ControleurListe extends Controleur{
     private VueGraphiqueListe vg;
     
     @Override
@@ -38,11 +37,6 @@ public class ControleurListe implements Controleur{
         }
     }
     
-    @Override
-    public void setPanier(Panier p){
-        this.p = p;
-    }
-    
     /**
      *
      * @param vg
@@ -50,5 +44,4 @@ public class ControleurListe implements Controleur{
     public void setVue(VueGraphique vg){
         this.vg = (VueGraphiqueListe) vg;
     }
-    
 }

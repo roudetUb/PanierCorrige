@@ -6,7 +6,6 @@
 package fr.ufrsciencestech.panier.View;
 
 import fr.ufrsciencestech.panier.Controler.Controleur;
-import java.awt.event.ActionEvent;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,9 +13,8 @@ import java.util.Observer;
  *
  * @author celine
  */
-public interface VueGraphique extends Vue,Observer {
+public interface VueGraphique extends Observer {
     @Override
     public void update(Observable m, Object o);
     public void addControleur(Controleur c);
-    //public int getValeur(ActionEvent e);
 }

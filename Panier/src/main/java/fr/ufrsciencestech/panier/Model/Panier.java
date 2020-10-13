@@ -211,7 +211,6 @@ public class Panier extends Observable {
             
         } catch (PanierPleinException ex) {
             
-        }
-        
+        } 
     }*/
 }

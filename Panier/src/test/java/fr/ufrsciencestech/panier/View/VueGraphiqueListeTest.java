@@ -17,7 +17,6 @@ import javax.swing.text.BadLocationException;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -32,7 +31,7 @@ public class VueGraphiqueListeTest {
     public void setUp() {
         vueg = new VueGraphiqueListe();
         Fruit o = (Fruit)new Orange();
-        vueg.addListeAdd(o);   //A NE PAS OUBLIER !!!
+        vueg.addListeFruits(o);   //A NE PAS OUBLIER !!!
         p = new Panier(2);
         c1 = new ControleurListe();
         c1.setPanier(p);
@@ -77,6 +76,7 @@ public class VueGraphiqueListeTest {
         int fin1l = res.getLineEndOffset(0);
         assertEquals(res.getText(debut1l, fin1l), "Panier de 0 fruits\n");
 
+        //tests d'acceptation (de l'interface) : 
         plus.doClick();
         fin1l = res.getLineEndOffset(0);
         assertEquals(res.getText(debut1l, fin1l), "Panier de 1 fruits : 0.5 euros\n");
@@ -99,6 +99,7 @@ public class VueGraphiqueListeTest {
         int fin1l = res.getLineEndOffset(0);
         assertEquals(res.getText(debut1l, fin1l), "Panier de 0 fruits\n");
 
+        //tests d'acceptation (de l'interface) : 
         plus.doClick();
         fin1l = res.getLineEndOffset(0);
         assertEquals(res.getText(debut1l, fin1l), "Panier de 1 fruits : 0.5 euros\n");
@@ -124,6 +125,7 @@ public class VueGraphiqueListeTest {
         final JButton minus = (JButton)TestUtils.getChildNamed(vueg, "Minus");
         assertNotNull(minus);
         
+        //tests d'acceptation (de l'interface) : 
         plus.doClick();
         int debut1l = res.getLineStartOffset(0);
         int fin1l = res.getLineEndOffset(0);
@@ -147,9 +149,9 @@ public class VueGraphiqueListeTest {
         int fin1l = res.getLineEndOffset(0);
         assertEquals(res.getText(debut1l, fin1l), "Panier de 0 fruits\n");
         
+        //tests d'acceptation (de l'interface) : 
         minus.doClick();
         fin1l = res.getLineEndOffset(0);
         assertEquals(res.getText(debut1l, fin1l), "Panier de 0 fruits\n");
     }
-    
 }

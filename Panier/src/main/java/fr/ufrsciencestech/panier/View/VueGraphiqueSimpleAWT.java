@@ -8,9 +8,7 @@ package fr.ufrsciencestech.panier.View;
 import fr.ufrsciencestech.panier.Controler.Controleur;
 import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
 import java.util.Observable;
-import java.util.Observer;
 import java.awt.Button;
 import java.awt.Frame;
 import java.awt.Label;
@@ -20,9 +18,9 @@ import java.awt.event.WindowEvent;
  *
  * @author celine
  */
-public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observer{
-    private Button inc;
-    private Button dec;
+public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique{
+    private final Button inc;
+    private final Button dec;
     private Label affiche;
     /**
      * @return the inc
@@ -61,6 +59,7 @@ public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observ
         add(affiche, BorderLayout.CENTER);
         
         this.addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e)
             {
                 System.exit(0);
@@ -86,12 +85,4 @@ public class VueGraphiqueSimpleAWT extends Frame implements VueGraphique, Observ
         getInc().addActionListener(c);
         getDec().addActionListener(c);
     }
-    
-    /*@Override
-    public int getValeur(ActionEvent e){
-        Button b = (Button) e.getSource();
-        //if(b != getInc() && b != getDec()) //pas d'autre bouton ici
-        //    return 0;  //autre evenement que l'appui sur l'un des 2 boutons
-        return (b==getInc()) ? 1 : -1;
-    }*/
 }

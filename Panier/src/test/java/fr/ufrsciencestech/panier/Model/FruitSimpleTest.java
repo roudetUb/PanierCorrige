@@ -65,5 +65,4 @@ public abstract class FruitSimpleTest {
         //les 2
         assertFalse(fs.equals(createFruit(1.0, "Espagne")));
     }
-
 }

@@ -56,6 +56,5 @@ public class Jus implements Fruit {
     @Override
     public String getCountry() {
         return "";  //on ne s'y interesse pas
-    }
-    
+    }  
 }

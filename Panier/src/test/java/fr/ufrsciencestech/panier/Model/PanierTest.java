@@ -163,7 +163,6 @@ public class PanierTest {
         assertEquals(expResult4, result5);
     }
     
-
     /**
      * Test of getContMax method, of class Panier.
      * @throws fr.ufrsciencestech.panier.Model.PanierPleinException
@@ -532,7 +531,4 @@ public class PanierTest {
         assertTrue(expOranges==resultOranges);
         assertTrue(expBananes==resultBananes);
     }
-    
-    
-    
 }

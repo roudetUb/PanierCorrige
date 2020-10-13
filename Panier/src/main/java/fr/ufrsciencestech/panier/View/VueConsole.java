@@ -42,5 +42,4 @@ public class VueConsole implements Observer{
         setTrace("Nouvelle contenance : " + nb.toString());
         System.out.println("Nouvelle contenance : " + nb.toString());
     }
-    
 }

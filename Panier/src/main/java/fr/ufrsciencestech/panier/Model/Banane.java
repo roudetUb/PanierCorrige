@@ -36,5 +36,4 @@ public class Banane extends FruitSimple{
     public boolean isSeedless() {
         return true;
     }
-    
 }

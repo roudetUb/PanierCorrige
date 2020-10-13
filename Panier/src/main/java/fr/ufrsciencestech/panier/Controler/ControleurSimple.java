@@ -5,7 +5,7 @@
  */
 package fr.ufrsciencestech.panier.Controler;
 
-import fr.ufrsciencestech.panier.Model.Panier;
+
 import fr.ufrsciencestech.panier.Model.PanierPleinException;
 import fr.ufrsciencestech.panier.Model.PanierVideException;
 import java.awt.Component;
@@ -15,8 +15,7 @@ import java.awt.event.ActionEvent;
  *
  * @author celine
  */
-public class ControleurSimple implements Controleur{
-    private Panier p;
+public class ControleurSimple extends Controleur{
     
     @Override
     public void actionPerformed(ActionEvent e){
@@ -34,10 +33,4 @@ public class ControleurSimple implements Controleur{
         }
             
     }
-
-    @Override
-    public void setPanier(Panier p){
-        this.p = p;
-    }
-
 }

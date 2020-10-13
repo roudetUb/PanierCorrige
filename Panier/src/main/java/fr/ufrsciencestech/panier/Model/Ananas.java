@@ -11,13 +11,13 @@ package fr.ufrsciencestech.panier.Model;
  */
 public class Ananas extends FruitSimple{
     
-    public Ananas() //throws Exception
+    public Ananas() 
     {
         this.price=2.0;
         this.country="Bresil";
     }
     
-    public Ananas(double price, String country) //throws Exception
+    public Ananas(double price, String country) 
     {
 	if(country.equals("")){
             this.price=price;
@@ -36,5 +36,4 @@ public class Ananas extends FruitSimple{
     public boolean isSeedless() {
         return true;
     }
-    
 }

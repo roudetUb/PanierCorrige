@@ -49,5 +49,4 @@ public abstract class FruitSimple implements Fruit {
     public abstract boolean isSeedless();
     @Override
     public abstract String toString();
-    
 }

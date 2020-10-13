@@ -65,5 +65,4 @@ public class BananeTest extends FruitSimpleTest {
         boolean result2 = instancesspepins.isSeedless();
         assertTrue(expResult2 == result2);
     }
-    
 }

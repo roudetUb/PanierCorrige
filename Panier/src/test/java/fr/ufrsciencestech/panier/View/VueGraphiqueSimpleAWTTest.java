@@ -61,6 +61,8 @@ public class VueGraphiqueSimpleAWTTest {
         assertNotNull(res); // Component found?
         final Button plus = (Button)TestUtils.getChildNamed(vueg, "Plus");
         assertNotNull(plus);
+        
+        //tests d'acceptation (de l'interface) : 
         //plus.doClick(); //ne marche pas avec AWT
         ActionEvent ae = new ActionEvent((Object)plus, ActionEvent.ACTION_PERFORMED, "");
         plus.dispatchEvent(ae);  
@@ -81,6 +83,8 @@ public class VueGraphiqueSimpleAWTTest {
         assertNotNull(plus);
         final Button minus = (Button)TestUtils.getChildNamed(vueg, "Minus");
         assertNotNull(minus);
+        
+        //tests d'acceptation (de l'interface) : 
         //plus.doClick(); //ne marche pas avec AWT
         ActionEvent aep = new ActionEvent((Object)plus, ActionEvent.ACTION_PERFORMED, "");
         ActionEvent aem = new ActionEvent((Object)minus, ActionEvent.ACTION_PERFORMED, "");
@@ -98,9 +102,10 @@ public class VueGraphiqueSimpleAWTTest {
         assertNotNull(res); // Component found?
         final Button minus = (Button)TestUtils.getChildNamed(vueg, "Minus");
         assertNotNull(minus);
+        
+        //tests d'acceptation (de l'interface) : 
         ActionEvent aem = new ActionEvent((Object)minus, ActionEvent.ACTION_PERFORMED, "");
         minus.dispatchEvent(aem);   //minus.doClick();
         assertEquals(res.getText(), "0");
     }
-    
 }

@@ -69,5 +69,4 @@ public class AnanasTest extends FruitSimpleTest {
         boolean result = instance.isSeedless();
         assertEquals(expResult, result);
     }
-    
 }

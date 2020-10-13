@@ -11,7 +11,6 @@ import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.util.Observable;
-import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -22,40 +21,34 @@ import javax.swing.JTextArea;
  *
  * @author celine
  */
-public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer {
-    private JButton inc;
-    private JButton dec;
-    private JComboBox<Fruit> listeAdd;
+public class VueGraphiqueListe extends JFrame implements VueGraphique {
+    private final JButton inc;
+    private final JButton dec;
+    private final JComboBox<Fruit> listeFruits;
     private JTextArea affichenb;
 
     public JButton getInc() {
         return inc;
     }
-    /*public void setInc(JButton inc) {
-        this.inc = inc;
-    }*/
+
     public JButton getDec() {
         return dec;
     }
-    /*public void setDec(JButton dec) {
-        this.dec = dec;
-    }*/
+
     public JTextArea getAffiche() {
         return affichenb;
     }
+    
     public void setAffiche(JTextArea affiche) {
         this.affichenb = affiche;
     }
 
     public JComboBox<Fruit> getListeAdd() {
-        return listeAdd;
+        return listeFruits;
     }
-    /*public void setListeAdd(JComboBox<Fruit> listeAdd) {
-        this.listeAdd = listeAdd;
-    }*/
     
-    public void addListeAdd(Fruit f){
-        listeAdd.addItem(f);
+    public void addListeFruits(Fruit f){
+        listeFruits.addItem(f);
         affichenb.setText(affichenb.getText() + "0 " + f + " a " + f.getPrice() + " euros\n" );
     }
 
@@ -65,24 +58,23 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
         dec = new JButton("-");
         affichenb = new JTextArea("Panier de 0 fruits\n");
         
-        listeAdd = new JComboBox<Fruit>();
+        listeFruits = new JComboBox<Fruit>();
         JPanel panelN = new JPanel();
 	panelN.setLayout(new FlowLayout());
         panelN.add(inc);
-        panelN.add(listeAdd);
+        panelN.add(listeFruits);
         add(panelN, BorderLayout.NORTH);
 
         add(dec, BorderLayout.SOUTH);
         add(affichenb, BorderLayout.CENTER);
         
         this.setVisible(true);
-        ///this.pack();
         
         /* Use setName() so AssertJ Swing can find these components easily */
         inc.setName("Plus");
         dec.setName("Minus");
         affichenb.setName("Affichage");
-        listeAdd.setName("Fruit");
+        listeFruits.setName("Fruit");
     }
 
     @Override
@@ -92,11 +84,11 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
             getAffiche().setText("Panier de 0 fruits\n");
         else
             getAffiche().setText("Panier de " + ((Integer)p.getFruits().size()).toString() + " fruits : " + p.getPrice() + " euros\n");
-        for(int i = 0 ; i < listeAdd.getItemCount() ; i++)
+        for(int i = 0 ; i < listeFruits.getItemCount() ; i++)
         {
-            Fruit f = (Fruit) listeAdd.getItemAt(i);
+            Fruit f = (Fruit) listeFruits.getItemAt(i);
             int nb = p.nbFruits(f);
-            affichenb.setText(affichenb.getText() + nb + " " + listeAdd.getItemAt(i) + " a " + listeAdd.getItemAt(i).getPrice() + " euros\n" );
+            affichenb.setText(affichenb.getText() + nb + " " + listeFruits.getItemAt(i) + " a " + listeFruits.getItemAt(i).getPrice() + " euros\n" );
         }
     }
 
@@ -105,12 +97,4 @@ public class VueGraphiqueListe extends JFrame implements VueGraphique, Observer 
         getInc().addActionListener(c);
         getDec().addActionListener(c);
     }
-    
-   /*@Override
-   public int getValeur(ActionEvent e){
-        JButton b = (JButton) e.getSource();
-        if(b != getInc() && b != getDec()) 
-            return 0;  //autre evenement que l'appui sur l'un des 2 boutons
-        return (b==getInc()) ? 1 : -1;
-    } */
 }

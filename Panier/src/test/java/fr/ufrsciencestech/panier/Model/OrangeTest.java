@@ -86,5 +86,4 @@ public class OrangeTest extends FruitSimpleTest{
         boolean result1 = instanceavecpepins.isSeedless();
         assertTrue(expResult1 == result1);
     }
-    
 }

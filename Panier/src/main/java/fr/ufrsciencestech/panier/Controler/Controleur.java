@@ -11,7 +11,10 @@ import java.awt.event.ActionListener;
  *
  * @author celine
  */
-public interface Controleur extends ActionListener{
-    public void setPanier(Panier p);
-    //public void setVue(VueGraphique vg);
+public abstract class Controleur implements ActionListener{
+    protected Panier p;
+    
+    public void setPanier(Panier p){
+        this.p = p;
+    }
 }

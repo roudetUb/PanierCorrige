@@ -9,7 +9,6 @@ import fr.ufrsciencestech.panier.Controler.Controleur;
 import fr.ufrsciencestech.panier.Model.Panier;
 import java.awt.BorderLayout;
 import java.util.Observable;
-import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,9 +17,9 @@ import javax.swing.JLabel;
  *
  * @author celine
  */
-public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer {
-    private JButton inc;
-    private JButton dec;
+public class VueGraphiqueSimple extends JFrame implements VueGraphique {
+    private final JButton inc;
+    private final JButton dec;
     private JLabel affiche;
     /**
      * @return the inc
@@ -79,13 +78,4 @@ public class VueGraphiqueSimple extends JFrame implements VueGraphique, Observer
         getInc().addActionListener(c);
         getDec().addActionListener(c);
     }
-    
-    /*@Override
-    public int getValeur(ActionEvent e){
-        JButton b = (JButton) e.getSource();
-        //if(b != getInc() && b != getDec()) //pas d'autre bouton ici
-        //    return 0;  //autre evenement que l'appui sur l'un des 2 boutons
-        return (b==getInc()) ? 1 : -1;
-    }*/
-    
 }

@@ -65,5 +65,4 @@ public class FraiseTest extends FruitSimpleTest{
         boolean result = instance.isSeedless();
         assertEquals(expResult, result);
     }
-    
 }

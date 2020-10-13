@@ -5,8 +5,6 @@
  */
 package fr.ufrsciencestech.panier.View;
 
-import fr.ufrsciencestech.panier.Model.Fruit;
-import fr.ufrsciencestech.panier.Model.Jus;
 import fr.ufrsciencestech.panier.Model.PanierVideException;
 import fr.ufrsciencestech.panier.Model.PanierPleinException;
 import fr.ufrsciencestech.panier.Model.Panier;
@@ -73,5 +71,4 @@ public class VueConsoleTest {
         p.add();
         assertEquals(vuec.getTrace(), "Nouvelle contenance : " + 2);
     }
-    
 }
