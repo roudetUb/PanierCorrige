@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
  * @author celine
  */
 public class ControleurListe extends Controleur{
-    private VueGraphiqueListe vg;
+    private VueGraphiqueListe vg; 
     
     @Override
     public void actionPerformed(ActionEvent e){
